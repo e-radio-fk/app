@@ -1,0 +1,3 @@
+I am using multiple build Configurations in Xcode, thus I ship 2 versions of ManageConky: Release and Homebrew-Cask.
+
+The version for Homebrew-Cask has specific changes such as Disabling Automatic Updater because Homebrew-Contributing Rules forbid it.

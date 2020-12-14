@@ -1,0 +1,36 @@
+# Site settings
+title: npyl's
+description: "npyl's site"
+url: "https://npyl.github.io"
+author:
+  name: "Nickolas Pylarinos"
+  email: "pylarinosnick@gmail.com"
+  url: "https://npyl.github.io"
+
+# Build settings
+markdown: kramdown
+source: src
+destination: ./emerald/_site
+permalink: /emerald/:title
+paginate: 8
+paginate_path: /emerald/page:num/
+exclude: ['node_modules']
+
+# Default values
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+
+# Custom variables
+version: "0.3"
+
+# Options
+reverse: true

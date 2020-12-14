@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<article id="post-page">
+
+	<h2 style="text-align: center">{{ page.title }}</h2>		
+	<time style="text-align: center" datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+
+	<div class="content">
+
+		{{ content }}
+		
+	</div>
+
+	<!-- Tweet Button -->
+	<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+	<!-- Load Facebook SDK for JavaScript -->
+  	<div id="fb-root"></div>
+  	<script>(function(d, s, id) {
+    	var js, fjs = d.getElementsByTagName(s)[0];
+    	if (d.getElementById(id)) return;
+    	js = d.createElement(s); js.id = id;
+    	js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    	fjs.parentNode.insertBefore(js, fjs);
+  	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- Your share button code -->
+	<div class="fb-share-button"
+		data-href="{{ page.url }}"
+		data-layout="button_count">
+	</div>
+
+	<!-- Amazon Recommendation Ad -->
+	<div id="amzn-assoc-ad-9403262d-30f5-417b-a1ee-7bb75d08ac8d"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=9403262d-30f5-417b-a1ee-7bb75d08ac8d"></script>
+
+	<!-- Fixup footer colliding with share button -->
+	<br>
+	<br>
+</article>
