@@ -1,5 +1,17 @@
 <header id="header">
-	<a href="/">
-	  <h1>stupid stuff</h1>
-	</a>
+	<div class="moving-banner">
+		<h1 id="the-actual-moving-banner">test</h1>
+		<script>
+			function move_banner()
+			{
+				before = parseInt(document.getElementById('the-actual-moving-banner').style.paddingLeft || 0, 10);
+				after = before + 20 + "px";
+				document.getElementById('the-actual-moving-banner').style.paddingLeft = after;
+
+				setTimeout(move_banner, 500);
+			}
+
+			move_banner();
+		</script>
+	</div>
 </header>

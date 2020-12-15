@@ -43,3 +43,13 @@ a {
 		color: darken($main-color, 5%);
 	}
 }
+
+.moving-banner {
+	left: 0px;
+	background-color: $main-color;
+
+	#the-actual-moving-banner {
+		text-align: left;
+		padding-left: 0px;
+	}
+}
