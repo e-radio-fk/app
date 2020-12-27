@@ -1,47 +1,38 @@
 <html>
 <head>
+	<title>FK Live E-Radio</title>
 	<link rel="stylesheet" href="css/base.css">
 </head>
 <header>
     <div class="now-playing-banner">
-		<p style="display:inline-block;">now playing:</p>
-        <p style="display:inline-block;" id="now-playing-banner-text"> temp</p>
+		<!-- <img src="img/radio-signal.svg" style="display: inline-block; margin-top: 90%; margin-left: auto; margin-right: auto;"> -->
+		<p>now playing:</p>
+        <p id="now-playing-banner-text">Last Christmas I Gave You My Heart</p>
 
-        <script>
-			function move_banner()
-			{
-				var before = 0;
-				var after = 0;
-				
-				// get old position
-				before = parseInt(document.getElementById('now-playing-banner-text').style.paddingLeft || 0, 10);
-
-				// make sure text will 'cycle'
-				if (before + 1 >= 100)
-					before = 0;
-
-				// increment position index
-				after = before + 1 + "%";
-
-				// set new position
-				document.getElementById('now-playing-banner-text').style.paddingLeft = after;
-
-				// make this a recurring function
-				setTimeout(move_banner, 230);
-			}
-
-			move_banner();
-        </script>
+		<!-- Move banner -->
+		<script src="scripts/move_banner.js"></script>
     </div>
 </header>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
 
 	<h1 style="text-align: center;">fk live patras radio</h1>
-    <p style="text-align: center;">Live-ράδιο από φοιτητές</p>
+    <p style="text-align: center;">Live e-ράδιο από φοιτητές</p>
+
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
+	<br class="no-select">
+
+	<div class="sign-in-space">
+		<button>Sign In</button>
+		<p class="text_small">Don't have an account? <a href="">Sign Up</a></p>
+	</div>
 </body>
 </html>
