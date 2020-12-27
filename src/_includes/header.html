@@ -1,9 +1,6 @@
 <header id="header">
-	<a href="/">
-		<h1>e-radio</h1>
-	</a>
 	<div class="moving-banner">
-		<h1 id="the-actual-moving-banner">test</h1>
+		<h1 id="moving-banner-text">test</h1>
 		<script>
 			function move_banner()
 			{
@@ -11,7 +8,7 @@
 				var after = 0;
 				
 				// get old position
-				before = parseInt(document.getElementById('the-actual-moving-banner').style.paddingLeft || 0, 10);
+				before = parseInt(document.getElementById('moving-banner-text').style.paddingLeft || 0, 10);
 
 				// make sure text will 'cycle'
 				if (before + 1 >= 100)
@@ -21,7 +18,7 @@
 				after = before + 1 + "%";
 
 				// set new position
-				document.getElementById('the-actual-moving-banner').style.paddingLeft = after;
+				document.getElementById('moving-banner-text').style.paddingLeft = after;
 
 				// make this a recurring function
 				setTimeout(move_banner, 230);
