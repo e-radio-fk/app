@@ -2,6 +2,14 @@
 <head>
 	<title>FK Live E-Radio</title>
 	<link rel="stylesheet" href="css/base.css">
+
+	<!-- Firebase -->
+	<script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+	<!-- Initialise Firebase -->
+	<script defer src="scripts/init-firebase.js"></script>
 </head>
 <header>
     <div class="now-playing-banner">
@@ -31,8 +39,15 @@
 	<br class="no-select">
 
 	<div class="sign-in-space">
-		<button class="no-select">Sign In</button>
+		<script defer src="scripts/login.js"></script>
+		
+		<button class="no-select" onclick="login()">Sign In</button>
 		<p class="text_small">Don't have an account? <a class="no-select" href="">Sign Up</a></p>
+	
+		<!-- Login Button -->
+		<div id="login-box">
+			<div id="firebaseui-auth-container"></div>
+		</div>
 	</div>
 </body>
 </html>
