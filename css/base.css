@@ -9,7 +9,8 @@ body {
   font-weight: 400;
   line-height: 1.75;
   color: #ffffff;
-  background-image: url("../img/background0.jpg");
+  background-color: rgb(7, 7, 107);
+  /* background-image: url("../img/background0.jpg"); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -83,4 +84,26 @@ small, .text_small {font-size: 0.8rem;}
         -ms-user-select: none;  /* Internet Explorer/Edge */
             user-select: none;  /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.sign-in-space input {
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+  box-shadow: 5px 1px 300px #000000;
+  text-align: center;
+  border: none;
+}
+
+#login-box {
+  width: 360px;
+  overflow: hidden;
+  margin: auto;  
+  margin: 20 0 0 380px;
+  padding: 30px;
+  background: rgb(14, 14, 97);
+  border-radius: 15px;
+  border-width: 3px;
+  visibility: hidden;
 }

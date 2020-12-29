@@ -1,28 +1,12 @@
-function login() {
+function show_login_box() {
+    document.getElementById('login-box').style.visibility = 'visible';
+    var nodes = document.getElementById('login-box').children;
+    for(var i = 0; i < nodes.length; i++) {
+        nodes[i].style.visibility = 'visible';
+    }
+}
 
-    // The start method will wait until the DOM is loaded.
-    var uiConfig = {
-      callbacks: {
-        uiShown: function() {
-          // The widget is rendered.
-          // Hide the loader.
-          document.getElementById('login-button').style.visibility = 'hidden';
-        },
-        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-          // User successfully signed in.
-          // Return type determines whether we continue the redirect automatically
-          // or whether we leave that to developer to handle.
-          return true;
-        }
-      },
-      // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-      signInFlow: 'popup',
-      signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      ],
-      signInSuccessUrl: './post_creator.html'
-    };
-  
-    ui.start('#firebaseui-auth-container', uiConfig);
-  }
+function login() {
+    // enable login box
+    show_login_box();
+}

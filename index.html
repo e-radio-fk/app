@@ -43,11 +43,21 @@
 		
 		<button class="no-select" onclick="login()">Sign In</button>
 		<p class="text_small">Don't have an account? <a class="no-select" href="">Sign Up</a></p>
-	
-		<!-- Login Button -->
+
 		<div id="login-box">
-			<div id="firebaseui-auth-container"></div>
-		</div>
+			<form id="login" method="get" action="login.php">    
+			<input type="text" name="Uname" id="Uname" placeholder="Username">    
+			<br><br>
+			<input type="Password" name="Pass" id="Pass" placeholder="Password">    
+			<br><br>
+			<input type="button" name="log" id="log" value="Sign In">       
+			<br><br>    
+			<input type="checkbox" id="check">    
+			<span>Remember me</span>    
+			<br><br>    
+			Forgot <a href="#">Password</a>
+			</form>     
+		</div>    
 	</div>
 </body>
 </html>
