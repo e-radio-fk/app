@@ -7,6 +7,17 @@
 
 @h1: #FFFFFF;
 
+.no-select {
+  /* disable selecting text */
+  -webkit-touch-callout: none;  /* iOS Safari */
+    -webkit-user-select: none;  /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none;  /* Internet Explorer/Edge */
+            user-select: none;  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 html {
   font-size: 100%;
 }
@@ -18,7 +29,6 @@ body {
   background-color: @background-color;
   color: @select-color;
   text-shadow: 1px 1px #000000;
-  /* background-image: url("../img/background0.jpg"); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -59,29 +69,13 @@ button {
   text-indent: 10px;
   padding: 10px;
   box-shadow: 5px 1px 300px #000000;
-}
 
-.no-select {
-  /* disable selecting text */
-  -webkit-touch-callout: none;  /* iOS Safari */
-    -webkit-user-select: none;  /* Safari */
-      -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none;  /* Internet Explorer/Edge */
-            user-select: none;  /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  .no-select();
 }
 
 /* make br non-selectable */
 br {
-    /* disable selecting text */
-    -webkit-touch-callout: none;  /* iOS Safari */
-    -webkit-user-select: none;  /* Safari */
-      -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none;  /* Internet Explorer/Edge */
-            user-select: none;  /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  .no-select();
 }
 
 .intro {
