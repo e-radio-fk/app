@@ -1,5 +1,6 @@
 .jekyll-cache
 .sass-cache
+src/css
 .DS_Store
 node_modules
 src/assets/js
