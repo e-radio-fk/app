@@ -54,6 +54,16 @@ small,
 .text_small {
   font-size: 0.8rem;
 }
+button {
+  background-color: #FFEA2E;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 25px;
+  text-indent: 10px;
+  padding: 10px;
+  box-shadow: 5px 1px 300px #000000;
+}
 .no-select {
   /* disable selecting text */
   -webkit-touch-callout: none;
@@ -87,6 +97,10 @@ br {
   /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+.intro {
+  text-align: center;
+  padding-top: 100px;
+}
 /* Banner */
 .now-playing-banner {
   height: 60px;
@@ -115,17 +129,10 @@ br {
   transform: scale(0.95);
 }
 .sign-in-space {
+  padding-top: 150px;
   text-align: center;
 }
 .sign-in-space button {
-  background-color: #FFEA2E;
-  border: 2px solid #000000;
-  border-radius: 10px;
-  text-transform: uppercase;
-  font-size: 25px;
-  text-indent: 10px;
-  padding: 10px;
-  box-shadow: 5px 1px 300px #000000;
   display: inline-block;
 }
 .sign-in-space a {
@@ -147,4 +154,17 @@ br {
   border-radius: 15px;
   border-width: 3px;
   visibility: hidden;
+}
+#login-box img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+#login-box img:hover {
+  transform: scale(1.25);
+}
+#login-box img:active {
+  transform: scale(0.95);
 }

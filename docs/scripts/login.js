@@ -4,9 +4,12 @@ function show_login_box() {
     for(var i = 0; i < nodes.length; i++) {
         nodes[i].style.visibility = 'visible';
     }
+
+    document.getElementById('sign-in-button').style.visibility = 'hidden';
+    document.getElementById('sign-in-text').style.visibility = 'hidden';
 }
 
-function login() {
+function sign_in() {
     // enable login box
     show_login_box();
 }

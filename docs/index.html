@@ -21,41 +21,34 @@
     </div>
 </header>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<h1 style="text-align: center;">fk live patras radio</h1>
-    <p style="text-align: center;">Live e-ράδιο από φοιτητές</p>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<div class="intro">
+		<h1>fk live patras radio</h1>
+		<p>Live e-ράδιο από φοιτητές</p>
+	</div>
 
 	<div class="sign-in-space">
 		<script defer src="scripts/login.js"></script>
 		
-		<button class="no-select" onclick="login()">Sign In</button>
-		<p class="text_small">Don't have an account? <a class="no-select" href="">Sign Up</a></p>
+		<button class="no-select" onclick="sign_in()" id="sign-in-button">Sign In</button>
+		<p class="text_small" id="sign-in-text">Don't have an account? <a class="no-select" onclick="sign_up()">Sign Up</a></p>
 
 		<div id="login-box">
-			<form id="login" method="get" action="login.php">    
-			<input type="text" name="Uname" id="Uname" placeholder="Username">    
-			<br><br>
-			<input type="Password" name="Pass" id="Pass" placeholder="Password">    
-			<br><br>
-			<input type="button" name="log" id="log" value="Sign In">       
-			<br><br>    
-			<input type="checkbox" id="check">    
-			<span>Remember me</span>    
-			<br><br>    
-			Forgot <a href="#">Password</a>
-			</form>     
+			<img src="img/back.png">
+
+			<div id="login-form" style="display: inline-block;">
+				<form id="login" method="get" action="login.php">    
+					<input type="text" name="Uname" id="Uname" placeholder="Username">    
+					<br><br>
+					<input type="Password" name="Pass" id="Pass" placeholder="Password">    
+					<br><br>
+					<input type="button" name="log" id="log" value="Sign In">       
+					<br><br>    
+					<input type="checkbox" id="check">    
+					<span>Remember me</span>    
+					<br><br>    
+					Forgot <a href="#">Password</a>
+				</form>     		
+			</div>
 		</div>    
 	</div>
 </body>
