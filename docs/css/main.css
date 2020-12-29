@@ -157,7 +157,8 @@ br {
   width: 290px;
   border-radius: 7px;
   text-align: center;
-  border: none;
+  border-color: #FFEA2E;
+  border-style: solid;
 }
 #login-box {
   width: 360px;
