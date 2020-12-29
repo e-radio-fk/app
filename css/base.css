@@ -41,40 +41,6 @@ h5 {font-size: 1.25rem;}
 
 small, .text_small {font-size: 0.8rem;}
 
-.now-playing-banner {
-  height: 60px;
-  background-color: rgba(194, 135, 224, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 7px;
-  box-shadow: 5px 1px 300px #000000;
-}
-
-.now-playing-banner p {
-  text-align: left;
-  display: inline-block;
-}
-
-.sign-in-space {
-  text-align: center;
-}
-
-.sign-in-space button {
-  color: white;
-  background-color: transparent;
-  border: 2px solid rgb(187, 42, 42);
-  border-radius: 10px;
-  text-transform: uppercase;
-  font-size: 25px;
-  text-indent: 10px;
-  padding: 10px;
-  box-shadow: 5px 1px 300px #000000;
-  display: inline-block;
-}
-
-.sign-in-space a {
-  color: bisque;
-}
-
 .no-select {
   /* disable selecting text */
   -webkit-touch-callout: none;  /* iOS Safari */
@@ -86,37 +52,14 @@ small, .text_small {font-size: 0.8rem;}
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.sign-in-space input {
-  height: 70px;
-  background-color: rgba(255, 255, 255, 0.30);
-  backdrop-filter: blur(10px);
-  border-radius: 7px;
-  box-shadow: 5px 1px 300px #000000;
-  text-align: center;
-  border: none;
-}
-
-#login-box {
-  width: 360px;
-  overflow: hidden;
-  margin: auto;  
-  margin: 20 0 0 380px;
-  padding: 30px;
-  background: rgb(14, 14, 97);
-  border-radius: 15px;
-  border-width: 3px;
-  visibility: hidden;
-}
-
-#play-button {
-  padding-left: 10px; 
-  display: inline-block; 
-  width: 40px; 
-  height: 40px; 
-  vertical-align: middle; 
-  opacity: 0.7;
-}
-
-#play-button:hover {
-  transform: scale(1.5);
+/* make br non-selectable */
+br {
+    /* disable selecting text */
+    -webkit-touch-callout: none;  /* iOS Safari */
+    -webkit-user-select: none;  /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none;  /* Internet Explorer/Edge */
+            user-select: none;  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
