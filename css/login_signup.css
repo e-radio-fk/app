@@ -1,8 +1,8 @@
 .sign-in-space {
     text-align: center;
-  }
-  
-  .sign-in-space button {
+}
+
+.sign-in-space button {
     color: white;
     background-color: transparent;
     border: 2px solid rgb(187, 42, 42);
@@ -13,13 +13,13 @@
     padding: 10px;
     box-shadow: 5px 1px 300px #000000;
     display: inline-block;
-  }
-  
-  .sign-in-space a {
+}
+
+.sign-in-space a {
     color: bisque;
-  }
-  
-  .sign-in-space input {
+}
+
+.sign-in-space input {
     height: 70px;
     background-color: rgba(255, 255, 255, 0.30);
     backdrop-filter: blur(10px);
@@ -27,9 +27,9 @@
     box-shadow: 5px 1px 300px #000000;
     text-align: center;
     border: none;
-  }
-  
-  #login-box {
+}
+
+#login-box {
     width: 360px;
     overflow: hidden;
     margin: auto;  
@@ -39,5 +39,4 @@
     border-radius: 15px;
     border-width: 3px;
     visibility: hidden;
-  }
-  
+}
