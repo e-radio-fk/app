@@ -25,5 +25,9 @@
 }
 
 #play-button:hover {
-    transform: scale(1.5);
+    transform: scale(1.25);
+}
+
+#play-button:active {
+    transform: scale(0.95);
 }
