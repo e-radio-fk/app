@@ -151,8 +151,10 @@ br {
 .sign-in-space a {
   color: bisque;
 }
-.sign-in-space input {
-  height: 70px;
+#login-form #Uname,
+#login-form #Pass {
+  height: 50px;
+  width: 290px;
   border-radius: 7px;
   text-align: center;
   border: none;
@@ -169,15 +171,25 @@ br {
   visibility: hidden;
 }
 #login-box img {
-  display: inline-block;
   width: 30px;
   height: 30px;
   vertical-align: middle;
   opacity: 0.8;
+  padding-right: 330px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
 }
-#login-box img:hover {
-  transform: scale(1.25);
+#login-box img:hover,
+#login-box img:focus {
+  -webkit-transform: translateX(-5px);
+  transform: translateX(-5px);
 }
 #login-box img:active {
-  transform: scale(0.95);
+  padding-right: 360px;
+  transform: scale(0.9);
 }

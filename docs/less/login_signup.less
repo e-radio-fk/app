@@ -13,12 +13,11 @@
     color: bisque;
 }
 
-.sign-in-space input {
-    height: 70px;
-    // background-color: rgba(255, 255, 255, 0.30);
-    // backdrop-filter: blur(10px);
+#login-form #Uname, 
+#login-form #Pass {
+    height: 50px;
+    width: 290px;
     border-radius: 7px;
-    // box-shadow: 5px 1px 300px #000000;
     text-align: center;
     border: none;
 }
@@ -35,19 +34,29 @@
     visibility: hidden;
 }
 
+// back-button
 #login-box img {
-    display: inline-block; 
     width: 30px; 
     height: 30px;
     vertical-align: middle; 
     opacity: 0.8;
-    
-    &:hover {
-        transform: scale(1.25);
+    padding-right: 330px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+
+    &:hover, &:focus {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
     }
     
     &:active {
-        transform: scale(0.95);
+        padding-right: 360px;
+        transform: scale(0.90);
     }
-    
 }

@@ -8,6 +8,7 @@
 	<script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
 	<script defer src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
 	<!-- Initialise Firebase -->
 	<script defer src="scripts/init-firebase.js"></script>
 </head>
@@ -35,17 +36,17 @@
 		<div id="login-box">
 			<img src="img/back.png">
 
-			<div id="login-form" style="display: inline-block;">
-				<form id="login" method="get" action="login.php">    
+			<div id="login-form">
+				<form id="login" method="get">    
 					<input type="text" name="Uname" id="Uname" placeholder="Username">    
 					<br><br>
 					<input type="Password" name="Pass" id="Pass" placeholder="Password">    
 					<br><br>
-					<input type="button" name="log" id="log" value="Sign In">       
-					<br><br>    
-					<input type="checkbox" id="check">    
+					<button name="log" id="log">Sign In</button>
+					<br><br>
+					<input type="checkbox" id="check">
 					<span>Remember me</span>    
-					<br><br>    
+					<br><br>
 					Forgot <a href="#">Password</a>
 				</form>     		
 			</div>
