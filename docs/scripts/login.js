@@ -22,8 +22,19 @@ function hide_login_box() {
 }
 
 function sign_in() {
-    // enable login box
-    show_login_box();
+    var email = document.getElementById('Uname').value;
+    var passw = document.getElementById('Pass').value;
+
+    firebase.auth().signInWithEmailAndPassword(email, passw)
+    .then((user) => {
+        /* change url (without logging to history => no back and forth)  */
+        window.location.replace('control-panel.html');
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert('Error (' + errorCode + '): ' + errorMessage);
+    });
 }
 
 function sign_up() {

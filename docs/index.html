@@ -30,27 +30,25 @@
 	<div class="sign-in-space">
 		<script defer src="scripts/login.js"></script>
 		
-		<button class="no-select" onclick="sign_in()" id="sign-in-button">Sign In</button>
+		<button class="no-select" onclick="show_login_box()" id="sign-in-button">Sign In</button>
 		<p class="text_small" id="sign-in-text">Don't have an account? <a class="no-select" onclick="sign_up()">Sign Up</a></p>
 
 		<div id="login-box">
 			<img src="img/back.png" onclick="hide_login_box()">
 
 			<div id="login-form">
-				<form id="login" method="get">    
-					<input type="text" name="Uname" id="Uname" placeholder="Username">    
-					<br><br>
-					<input type="Password" name="Pass" id="Pass" placeholder="Password">    
-					<br><br>
-					<button name="log" id="log">Sign In</button>
-					<br><br>
-					<input type="checkbox" id="check">
-					<span>Remember me</span>    
-					<br><br>
-					Forgot <a href="#">Password</a>
-				</form>     		
+				<input type="text" name="Uname" id="Uname" placeholder="Username">    
+				<br><br>
+				<input type="Password" name="Pass" id="Pass" placeholder="Password">    
+				<br><br>
+				<button name="log" id="log" onclick="sign_in()">Sign In</button>
+				<br><br>
+				<input type="checkbox" id="check">
+				<span>Remember me</span>    
+				<br><br>
+				Forgot <a href="#">Password</a>
 			</div>
-		</div>    
+		</div>
 	</div>
 </body>
 </html>
