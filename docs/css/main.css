@@ -141,6 +141,19 @@ br {
 #play-button:active {
   transform: scale(0.95);
 }
+.settings-nav-bar {
+  height: 60px;
+  background-color: rgba(194, 135, 224, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+  box-shadow: 5px 1px 300px #000000;
+}
+.settings-nav-bar h4 {
+  vertical-align: middle;
+  margin: 15px;
+  text-align: left;
+  display: inline-block;
+}
 .sign-in-space {
   padding-top: 150px;
   text-align: center;
