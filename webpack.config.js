@@ -1,11 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  target: 'node',
   entry: {
     socket_io: path.resolve(__dirname, "_webpack/socket.io.js")
   },
   output: {
-    path: path.resolve(__dirname, "docs/scripts/")
+    path: path.resolve(__dirname, "docs/assets/")
   },
   mode: "production",
   module: {
@@ -28,5 +29,5 @@ module.exports = {
       "stream": require.resolve("stream-browserify"),
     }
   },
-  externals: { fs: "commonjs fs" }
+  // externals: { express: "express" }
 };
