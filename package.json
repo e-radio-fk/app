@@ -28,6 +28,7 @@
     "babel-preset-env": "^1.7.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
+    "bufferutil": "^4.0.2",
     "crypto-browserify": "^3.12.0",
     "fs": "0.0.1-security",
     "less": "^4.0.0",
@@ -36,6 +37,7 @@
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.1.1",
     "url": "^0.11.0",
+    "utf-8-validate": "^5.0.3",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.1"
   }
