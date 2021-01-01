@@ -1,6 +1,7 @@
 Development is done in the following manner:
-- VSCode on WSL/Windows10 for programming
+- VSCode on WSL/Windows10 for programming (open up `git-bash`, `cd`  into project's root, type `wsl` and then `code ./docs`)
 - webpack & npm work on Windows10 - This is because of some inconsistencies with my Node installation on my WSL that rendered my development unbearable.
+(everything mentioned as part of bullet 2. can be done on `git-bash`.)
 
 We are using some Node plugins such as CSS Less.
 
