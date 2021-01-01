@@ -7,7 +7,6 @@
  */
 
 const port = 4000;
-const server = http.createServer(app);
 
 app.use(express.static(__dirname + "/public"));
 
