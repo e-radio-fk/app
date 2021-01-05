@@ -1,16 +1,28 @@
 <html>
 <head>
     <title>FK Live E-Radio: Control Panel</title>
-	<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- Firebase -->
+	<script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+	<!-- Initialise Firebase -->
+	<script defer src="scripts/init-firebase.js"></script>
+
 </head>
 <header>
+    <script defer src="scripts/login.js"></script>
+
     <div class="settings-nav-bar" id="settings-nav-bar">
         <h4>version 0.0.0.1</h4>
 
         <div class="dropdown">
             <div class="dropdown-content">
               <a href="./settings.html">Settings</a>
-              <p href="./sign_out.html">Sign Out</p>
+              <p onclick="sign_out()">Sign Out</p>
             </div>
             <img src="img/person.png" class="dropbtn">
         </div>

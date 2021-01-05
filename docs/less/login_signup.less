@@ -74,12 +74,12 @@
  * LOGIN ICON *
  **************/
 
-.dropdown {
+.settings-nav-bar .dropdown {
     position: relative;
     float: right;
 }
   
-.dropdown-content {
+.settings-nav-bar .dropdown-content {
     background-color: @background-color-light;
     backdrop-filter: blur(10px);
     border-radius: 7px;
@@ -94,22 +94,22 @@
     cursor: hand;
 }
 
-.dropdown-content a, p {
+.settings-nav-bar .dropdown-content a, p {
     color: @text-color;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content p {
+.settings-nav-bar .dropdown-content p {
     .no-select();
 }
 
-.dropdown-content a:hover, p:hover {
+.settings-nav-bar .dropdown-content a:hover, p:hover {
     backdrop-filter: brightness(150%);
 }
 
-.dropdown:hover .dropdown-content {
+.settings-nav-bar .dropdown:hover .dropdown-content {
     display: block;
 }
  
