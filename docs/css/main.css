@@ -127,7 +127,7 @@ br {
   display: inline-block;
 }
 /* Play button */
-#play-button {
+.play-button {
   padding-left: 10px;
   display: inline-block;
   width: 40px;
@@ -135,26 +135,19 @@ br {
   vertical-align: middle;
   opacity: 0.8;
 }
-#play-button:hover {
+.play-button:hover {
   transform: scale(1.25);
 }
-#play-button:active {
+.play-button:active {
   transform: scale(0.95);
 }
-.settings-nav-bar {
-  height: 60px;
-  background-color: rgba(194, 135, 224, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 7px;
-  box-shadow: 5px 1px 300px #000000;
-}
-.settings-nav-bar h4 {
+#control-panel-nav-bar h4 {
   vertical-align: middle;
   margin: 15px;
   text-align: left;
   display: inline-block;
 }
-.settings-nav-bar img {
+#control-panel-nav-bar img {
   vertical-align: middle;
   height: 30px;
   width: 30px;
@@ -213,16 +206,29 @@ br {
   padding-right: 360px;
   transform: scale(0.9);
 }
-/* Style The Dropdown Button */
+/*********************
+ * LOGIN ICON BUTTON *
+ *********************/
 .dropbtn {
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  /* disable selecting text */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
-/**************
- * LOGIN ICON *
- **************/
 .dropdown {
   position: relative;
   float: right;
@@ -239,31 +245,10 @@ br {
   z-index: 1;
   cursor: hand;
 }
-.dropdown-content a,
-p {
-  color: #FFEA2E;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.dropdown-content a:hover {
+  backdrop-filter: brightness(150%);
 }
-.dropdown-content p {
-  /* disable selecting text */
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Old versions of Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
-.dropdown-content a:hover,
-p:hover {
+.dropdown-content p:hover {
   backdrop-filter: brightness(150%);
 }
 .dropdown:hover .dropdown-content {
