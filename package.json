@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/less/bin/lessc docs/less/main.less docs/css/main.css && browserify docs/_browserify/socket.io.js -o docs/scripts/socket.io.js",
+    "watch": "watchify docs/_browserify/socket.io.js -o docs/scripts/socket.io.js --debug --verbose"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,8 @@
     "stream-http": "^3.1.1",
     "url": "^0.11.0",
     "utf-8-validate": "^5.0.3"
+  },
+  "dependencies": {
+    "watchify": "^4.0.0"
   }
 }
