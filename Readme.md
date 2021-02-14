@@ -10,3 +10,8 @@ In order to prepare this project on a clean installation, you first need to inst
 cd $Project-Root
 npm install
 ```
+
+Then you need to build and finally run it (Inside project root):
+```
+./run.sh
+```
