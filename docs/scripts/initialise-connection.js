@@ -7,9 +7,6 @@
  */
 
 const port = 4000;
-
-// app.use(express.static(__dirname + "/public"));
-
 io.sockets.on("error", e => console.log(e));
 server.listen(port, () => console.log(`Server is running on port ${port}`));
 

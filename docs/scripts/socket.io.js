@@ -39487,14 +39487,14 @@ function extend() {
 }
 
 },{}],254:[function(require,module,exports){
+// const express = require("express");
+// const app = express();
+
 const http = require("http");
-// http.createServer((req, res) => {
-//     // Set the response HTTP header with HTTP status and Content type
-//     res.writeHead(200, {'Content-Type': 'text/plain'}); 
-//     // Send the response body "Hello World"
-//     res.end('Hello World\n');
-// });
-const io = require("socket.io");
+const server = http.createServer(app);
+const io = require("socket.io")(server);
+
+// app.use(express.static(__dirname + "/public"));
 },{"http":226,"socket.io":293}],255:[function(require,module,exports){
 /*!
  * accepts
