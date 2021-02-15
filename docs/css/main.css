@@ -114,6 +114,113 @@ br {
   text-align: center;
   padding-top: 100px;
 }
+/*********************
+ * LOGIN ICON BUTTON *
+ *********************/
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  height: 30px;
+  width: 30px;
+  border: none;
+  cursor: pointer;
+  float: left;
+  /* disable selecting text */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.dropdown {
+  position: relative;
+  float: right;
+  /* disable selecting text */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.dropdown-content {
+  background-color: #5a3ebe;
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  right: 0;
+  top: 60px;
+  z-index: 1;
+  cursor: hand;
+}
+.dropdown-content a {
+  color: #FFEA2E;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  /* disable selecting text */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.dropdown-content p {
+  color: #FFEA2E;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  /* disable selecting text */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.dropdown-content a:hover {
+  backdrop-filter: brightness(150%);
+}
+.dropdown-content p:hover {
+  backdrop-filter: brightness(150%);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 /* Banner */
 .now-playing-banner {
   height: 60px;
@@ -145,13 +252,7 @@ br {
   vertical-align: middle;
   margin: 15px;
   text-align: left;
-  display: inline-block;
-}
-#control-panel-nav-bar img {
-  vertical-align: middle;
-  height: 30px;
-  width: 30px;
-  display: inline-block;
+  float: left;
 }
 .sign-in-space {
   padding-top: 150px;
@@ -205,52 +306,4 @@ br {
 #login-box img:active {
   padding-right: 360px;
   transform: scale(0.9);
-}
-/*********************
- * LOGIN ICON BUTTON *
- *********************/
-.dropbtn {
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  /* disable selecting text */
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Old versions of Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
-.dropdown {
-  position: relative;
-  float: right;
-}
-.dropdown-content {
-  background-color: #5a3ebe;
-  backdrop-filter: blur(10px);
-  border-radius: 7px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: none;
-  position: relative;
-  min-width: 160px;
-  top: 60px;
-  z-index: 1;
-  cursor: hand;
-}
-.dropdown-content a:hover {
-  backdrop-filter: brightness(150%);
-}
-.dropdown-content p:hover {
-  backdrop-filter: brightness(150%);
-}
-.dropdown:hover .dropdown-content {
-  display: block;
 }
