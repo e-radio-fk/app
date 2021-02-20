@@ -43,10 +43,9 @@ function sign_up() {
 
 function sign_out() {
     firebase.auth().signOut().then(() => {
-        window.localtion.replace('/');
-
-        // TODO: show notification!
+        // ...
     }).catch((error) => {
         alert("error: ", error);
     });
+    window.localtion.replace('/');
 }

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>FK Live E-Radio: Control Panel</title>
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Firebase -->
+	<script defer src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+	<!-- Initialise Firebase -->
+	<script defer src="scripts/Firebase/init-firebase.js"></script>
+
+    <script defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+    <!-- Initialise Google Drive API -->
+    <script src="scripts/init-google-drive.js"></script>
+</head>
+<body>
+    <br>
+    <br>
+    <h1 style="text-align: center;">Profile</h1>
+
+    <button onclick="set_photo()">Choose Photo</button>
+</body>
+</html>
