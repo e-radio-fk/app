@@ -10,6 +10,3 @@ var firebaseConfig = {
 
 // Initialize Firebase
 var fb = firebase.initializeApp(firebaseConfig);
-
-// Initialize the FirebaseUI Widget using Firebase.
-// var ui = new firebaseui.auth.AuthUI(firebase.auth());

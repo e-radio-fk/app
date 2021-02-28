@@ -4,18 +4,35 @@
 
 import sirv from './_sirv.js';
 
-function upload_photo(file) {
-    /* get current user */
-    var user = firebase.auth().currentUser;
+// TODO: add a modal for waiting the file to get uploaded!
 
-    // TODO: add a modal for waiting the file to get uploaded!
+function upload_photo(file) {
+    var user = firebase.auth().currentUser;
+    if (!user)
+        console.log("Failure getting the user!");
+
+    /* SIRV login */
+    var s = new sirv();
+    s.login(function() {
+        /* create a file reader */
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        /* read raw contents and upload using sirv class */
+        reader.onload = readerEvent => {
+            var content = readerEvent.target.result;
+
+            /* prepare file path inside the server */
+            var serverFilePath = /*user.email +*/ 'pylarinosnick@gmail.com/user_photo/' + file.name;
+
+            console.log(serverFilePath);
+
+            s.uploadFile(serverFilePath, content);
+        }
+    });
 }
 
 function set_photo() {
-    var s = new sirv();
-
-    s.login();
-    
     /*
      * Open File Manager
      */
@@ -23,8 +40,10 @@ function set_photo() {
     input.type = 'file';
     input.multiple = false;
     input.onchange = e => { 
+        /* get the file; we allow only one */
         var file = e.target.files[0];
 
+        /* upload photo */
         upload_photo(file);
     }
 

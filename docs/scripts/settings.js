@@ -8,25 +8,45 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 //
 // SETTINGS
 //
+// TODO: add a modal for waiting the file to get uploaded!
 function upload_photo(file) {
-  /* get current user */
-  var user = firebase.auth().currentUser; // TODO: add a modal for waiting the file to get uploaded!
+  var user = firebase.auth().currentUser;
+  if (!user) console.log("Failure getting the user!");
+  /* SIRV login */
+
+  var s = new _sirv["default"]();
+  s.login(function () {
+    /* create a file reader */
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    /* read raw contents and upload using sirv class */
+
+    reader.onload = function (readerEvent) {
+      var content = readerEvent.target.result;
+      /* prepare file path inside the server */
+
+      var serverFilePath =
+      /*user.email +*/
+      'pylarinosnick@gmail.com/user_photo/' + file.name;
+      console.log(serverFilePath);
+      s.uploadFile(serverFilePath, content);
+    };
+  });
 }
 
 function set_photo() {
-  console.log("HERE!");
-  var s = new _sirv["default"]();
-  s.login();
   /*
    * Open File Manager
    */
-
   var input = document.createElement('input');
   input.type = 'file';
   input.multiple = false;
 
   input.onchange = function (e) {
+    /* get the file; we allow only one */
     var file = e.target.files[0];
+    /* upload photo */
+
     upload_photo(file);
   };
   /* open file manager */
@@ -34,6 +54,12 @@ function set_photo() {
 
   input.click();
 }
+/*
+ * At this point we have defined our functions, but normal html cannot
+ *  see our Node.JS functions (e.g. set_photo()).  Therefore, we assign
+ *  onclick handlers through here!
+ */
+
 
 document.getElementById('change_user_photo_button').onclick = set_photo;
 
@@ -41,24 +67,34 @@ document.getElementById('change_user_photo_button').onclick = set_photo;
 (function (Buffer){(function (){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _https = require("https");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var http = require('https'); //
+//
 // SIRV
 //
-
-
 var clientId = 'Vzxh2OxziBamlHKpwMh0MqbZhKT';
 var clientSecret = 'z+so8b02rM+d35VFJ2bB9R8IXxIKRLbGZQ9WucVBMHlP/fnaKPN1He0/GwwtnnZvbF5527e5UDO2BrjrY52pgw==';
 
-module.exports = /*#__PURE__*/function () {
+var sirv = /*#__PURE__*/function () {
   function sirv() {
     _classCallCheck(this, sirv);
-  }
+
+    this.token = '';
+  } //
+  //  Member Functions
+  //
+
   /*
    * function that makes REST calls to SIRV
    */
@@ -67,28 +103,16 @@ module.exports = /*#__PURE__*/function () {
   _createClass(sirv, [{
     key: "sendRequest",
     value: function sendRequest(options) {
-      var req = http.request(options, function (res) {
-        var chunks = [];
-        res.on('data', function (chunk) {
-          chunks.push(chunk);
-        });
-        res.on('end', function () {
-          var body = Buffer.concat(chunks);
-          var apiResponse = JSON.parse(body.toString());
-          console.log('token:', apiResponse.token);
-          console.log('expiresIn:', apiResponse.expiresIn);
-          console.log('scope:', apiResponse.scope);
-        });
+      (0, _https.request)(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        console.log(body);
       });
-      req.write(JSON.stringify({
-        clientId: clientId,
-        clientSecret: clientSecret
-      }));
-      req.end();
     }
   }, {
     key: "login",
-    value: function login() {
+    value: function login(handler) {
+      var _this = this;
+
       var options = {
         'method': 'POST',
         'hostname': 'api.sirv.com',
@@ -97,12 +121,60 @@ module.exports = /*#__PURE__*/function () {
           'content-type': 'application/json'
         }
       };
+      var req = (0, _https.request)(options, function (res) {
+        var chunks = [];
+        res.on('data', function (chunk) {
+          chunks.push(chunk);
+        });
+        res.on('end', function () {
+          var body = Buffer.concat(chunks);
+          var apiResponse = JSON.parse(body.toString());
+          _this.token = apiResponse.token; // console.log('token:', apiResponse.token);
+          // console.log('expiresIn:', apiResponse.expiresIn);
+          // console.log('scope:', apiResponse.scope);
+
+          /* success handler */
+
+          handler();
+        });
+      });
+      req.write(JSON.stringify({
+        clientId: clientId,
+        clientSecret: clientSecret
+      }));
+      req.end();
+    }
+    /*
+     * filePath: the path of where the file should exist inside the SIRV server
+     * data: the data contained in the file the user selected!
+     */
+
+  }, {
+    key: "uploadFile",
+    value: function uploadFile(filePath, data) {
+      var content_type = 'image/png';
+      var authorization = 'Bearer ' + this.token;
+      console.log('TKN: ', authorization);
+      var options = {
+        method: 'POST',
+        url: 'https://api.sirv.com/v2/files/upload',
+        qs: {
+          filename: filePath
+        },
+        headers: {
+          'content-type': content_type,
+          authorization: authorization
+        },
+        body: data
+      };
       this.sendRequest(options);
     }
   }]);
 
   return sirv;
 }();
+
+exports["default"] = sirv;
 
 }).call(this)}).call(this,require("buffer").Buffer)
 },{"buffer":5,"https":9}],3:[function(require,module,exports){
