@@ -9,14 +9,6 @@
 
 	<!-- Initialise Firebase -->
 	<script defer src="scripts/Firebase/init-firebase.js"></script>
-
-    <script defer src="https://apis.google.com/js/api.js"
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
-
-    <!-- Initialise Google Drive API -->
-    <script src="scripts/init-google-drive.js"></script>
 </head>
 <body>
     <br>
@@ -24,5 +16,8 @@
     <h1 style="text-align: center;">Profile</h1>
 
     <button onclick="set_photo()">Choose Photo</button>
+
+    <script defer src="scripts/settings.js"></script>
+    <script defer src="scripts/sirv.js"></script>
 </body>
 </html>
