@@ -12,7 +12,6 @@ function upload_photo(file) {
 }
 
 function set_photo() {
-
     var s = new sirv();
 
     s.login();
@@ -32,3 +31,10 @@ function set_photo() {
     /* open file manager */
     input.click();
 }
+
+/*
+ * At this point we have defined our functions, but normal html cannot
+ *  see our Node.JS functions (e.g. set_photo()).  Therefore, we assign
+ *  onclick handlers through here!
+ */
+document.getElementById('change_user_photo_button').onclick = set_photo;

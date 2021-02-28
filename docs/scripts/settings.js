@@ -14,6 +14,7 @@ function upload_photo(file) {
 }
 
 function set_photo() {
+  console.log("HERE!");
   var s = new _sirv["default"]();
   s.login();
   /*
@@ -33,6 +34,8 @@ function set_photo() {
 
   input.click();
 }
+
+document.getElementById('change_user_photo_button').onclick = set_photo;
 
 },{"./_sirv.js":2}],2:[function(require,module,exports){
 (function (Buffer){(function (){
