@@ -16,21 +16,10 @@ function upload_photo(file) {
 
   var s = new _sirv["default"]();
   s.login(function () {
-    /* create a file reader */
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    /* read raw contents and upload using sirv class */
-
-    reader.onload = function (readerEvent) {
-      var content = readerEvent.target.result;
-      /* prepare file path inside the server */
-
-      var serverFilePath =
-      /*user.email +*/
-      'pylarinosnick@gmail.com/user_photo/' + file.name;
-      console.log(serverFilePath);
-      s.uploadFile(serverFilePath, content);
-    };
+    /* prepare file path inside the server */
+    var serverFilePath = '/pylarinosnick@gmail.com/user_photo.png';
+    console.log(serverFilePath);
+    s.uploadFile(serverFilePath, file);
   });
 }
 
@@ -44,7 +33,8 @@ function set_photo() {
 
   input.onchange = function (e) {
     /* get the file; we allow only one */
-    var file = e.target.files[0];
+    var file = e.target.files[0]; // TODO: if not png, convert to png!
+
     /* upload photo */
 
     upload_photo(file);
@@ -74,6 +64,8 @@ exports["default"] = void 0;
 
 var _https = require("https");
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -91,10 +83,7 @@ var sirv = /*#__PURE__*/function () {
     _classCallCheck(this, sirv);
 
     this.token = '';
-  } //
-  //  Member Functions
-  //
-
+  }
   /*
    * function that makes REST calls to SIRV
    */
@@ -102,12 +91,43 @@ var sirv = /*#__PURE__*/function () {
 
   _createClass(sirv, [{
     key: "sendRequest",
-    value: function sendRequest(options) {
-      (0, _https.request)(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body);
+    value: function sendRequest(url, options) {
+      fetch(url, options) // .then(response => response.json())
+      .then(function (result) {
+        console.log('Success:', result);
+      })["catch"](function (error) {
+        console.error('Error:', error);
       });
     }
+  }, {
+    key: "serialize",
+    value: function (_serialize) {
+      function serialize(_x, _x2) {
+        return _serialize.apply(this, arguments);
+      }
+
+      serialize.toString = function () {
+        return _serialize.toString();
+      };
+
+      return serialize;
+    }(function (obj, prefix) {
+      var str = [],
+          p;
+
+      for (p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          var k = prefix ? prefix + "[" + p + "]" : p,
+              v = obj[p];
+          str.push(v !== null && _typeof(v) === "object" ? serialize(v, k) : encodeURIComponent(k) + "=" + encodeURIComponent(v));
+        }
+      }
+
+      return str.join("&");
+    } //
+    //  Member Functions
+    //
+    )
   }, {
     key: "login",
     value: function login(handler) {
@@ -129,10 +149,9 @@ var sirv = /*#__PURE__*/function () {
         res.on('end', function () {
           var body = Buffer.concat(chunks);
           var apiResponse = JSON.parse(body.toString());
-          _this.token = apiResponse.token; // console.log('token:', apiResponse.token);
-          // console.log('expiresIn:', apiResponse.expiresIn);
-          // console.log('scope:', apiResponse.scope);
+          /* get token */
 
+          _this.token = apiResponse.token;
           /* success handler */
 
           handler();
@@ -146,28 +165,30 @@ var sirv = /*#__PURE__*/function () {
     }
     /*
      * filePath: the path of where the file should exist inside the SIRV server
-     * data: the data contained in the file the user selected!
+     * file: the file (as in JS File API) to upload
      */
 
   }, {
     key: "uploadFile",
-    value: function uploadFile(filePath, data) {
-      var content_type = 'image/png';
+    value: function uploadFile(filePath, file) {
+      var content_type = file.type;
       var authorization = 'Bearer ' + this.token;
-      console.log('TKN: ', authorization);
+      var filename = this.serialize({
+        filename: filePath
+      });
+      var formData = new FormData();
+      formData.append('file', file);
+      var url = new URL('https://api.sirv.com/v2/files/upload');
+      url.search = new URLSearchParams(filename);
       var options = {
         method: 'POST',
-        url: 'https://api.sirv.com/v2/files/upload',
-        qs: {
-          filename: filePath
-        },
         headers: {
           'content-type': content_type,
           authorization: authorization
         },
-        body: data
+        body: formData
       };
-      this.sendRequest(options);
+      this.sendRequest(url, options);
     }
   }]);
 

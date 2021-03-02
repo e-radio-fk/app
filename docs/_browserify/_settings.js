@@ -14,21 +14,12 @@ function upload_photo(file) {
     /* SIRV login */
     var s = new sirv();
     s.login(function() {
-        /* create a file reader */
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
+        /* prepare file path inside the server */
+        var serverFilePath = '/pylarinosnick@gmail.com/user_photo.png';
 
-        /* read raw contents and upload using sirv class */
-        reader.onload = readerEvent => {
-            var content = readerEvent.target.result;
+        console.log(serverFilePath);
 
-            /* prepare file path inside the server */
-            var serverFilePath = /*user.email +*/ 'pylarinosnick@gmail.com/user_photo/' + file.name;
-
-            console.log(serverFilePath);
-
-            s.uploadFile(serverFilePath, content);
-        }
+        s.uploadFile(serverFilePath, file);
     });
 }
 
@@ -42,6 +33,8 @@ function set_photo() {
     input.onchange = e => { 
         /* get the file; we allow only one */
         var file = e.target.files[0];
+
+        // TODO: if not png, convert to png!
 
         /* upload photo */
         upload_photo(file);

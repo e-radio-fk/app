@@ -12,21 +12,39 @@ export default class sirv {
         this.token = '';
     }
 
-    //
-    //  Member Functions
-    //
-
     /*
      * function that makes REST calls to SIRV
      */
-    sendRequest(options) {      
-        request(options, function (error, response, body) {
-                if (error) 
-                    throw new Error(error);
-
-                console.log(body);
-            });
+    sendRequest(url, options) {      
+        fetch(url, options)
+        // TODO: find out why this doesn't work!
+        // .then(response => response.json())
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
+
+    serialize (obj, prefix) {
+        var str = [],
+          p;
+        for (p in obj) {
+          if (obj.hasOwnProperty(p)) {
+            var k = prefix ? prefix + "[" + p + "]" : p,
+              v = obj[p];
+            str.push((v !== null && typeof v === "object") ?
+              serialize(v, k) :
+              encodeURIComponent(k) + "=" + encodeURIComponent(v));
+          }
+        }
+        return str.join("&");
+    }
+
+    //
+    //  Member Functions
+    //
 
     login(handler) {
         const options = {
@@ -51,10 +69,6 @@ export default class sirv {
             
                 /* get token */
                 this.token = apiResponse.token;
-
-                // console.log('token:', apiResponse.token);
-                // console.log('expiresIn:', apiResponse.expiresIn);
-                // console.log('scope:', apiResponse.scope);
                 
                 /* success handler */
                 handler();
@@ -71,27 +85,31 @@ export default class sirv {
 
     /*
      * filePath: the path of where the file should exist inside the SIRV server
-     * data: the data contained in the file the user selected!
+     * file: the file (as in JS File API) to upload
      */
-    uploadFile(filePath, data) {
-        var content_type = 'image/png';
+    uploadFile(filePath, file) {
+        var content_type = file.type;
         var authorization = 'Bearer ' + this.token;
 
-        console.log('TKN: ', authorization);
+        var filename = this.serialize({
+            filename: filePath
+        });
 
-        var options = {
+        let formData = new FormData();
+        formData.append('file', file);
+
+        var url = new URL('https://api.sirv.com/v2/files/upload');
+        url.search = new URLSearchParams(filename);
+
+        const options = {
             method: 'POST',
-            url: 'https://api.sirv.com/v2/files/upload',
-            qs: {
-                filename: filePath
-            },
             headers: {
                 'content-type': content_type,
                 authorization: authorization
             },
-            body: data
+            body: formData
         };
 
-        this.sendRequest(options);
+        this.sendRequest(url, options);
     }
 }
