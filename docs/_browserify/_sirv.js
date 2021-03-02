@@ -88,7 +88,6 @@ export default class sirv {
      * file: the file (as in JS File API) to upload
      */
     uploadFile(filePath, file) {
-        var content_type = file.type;
         var authorization = 'Bearer ' + this.token;
 
         var filename = this.serialize({
@@ -104,10 +103,9 @@ export default class sirv {
         const options = {
             method: 'POST',
             headers: {
-                'content-type': content_type,
                 authorization: authorization
             },
-            body: formData
+            body: file
         };
 
         this.sendRequest(url, options);

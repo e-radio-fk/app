@@ -37,7 +37,8 @@ var sirv = /*#__PURE__*/function () {
   _createClass(sirv, [{
     key: "sendRequest",
     value: function sendRequest(url, options) {
-      fetch(url, options) // .then(response => response.json())
+      fetch(url, options) // TODO: find out why this doesn't work!
+      // .then(response => response.json())
       .then(function (result) {
         console.log('Success:', result);
       })["catch"](function (error) {
@@ -116,7 +117,7 @@ var sirv = /*#__PURE__*/function () {
   }, {
     key: "uploadFile",
     value: function uploadFile(filePath, file) {
-      var content_type = file.type;
+      // var content_type = file.type;
       var authorization = 'Bearer ' + this.token;
       var filename = this.serialize({
         filename: filePath
@@ -128,10 +129,10 @@ var sirv = /*#__PURE__*/function () {
       var options = {
         method: 'POST',
         headers: {
-          'content-type': content_type,
+          // 'content-type': content_type,
           authorization: authorization
         },
-        body: formData
+        body: file
       };
       this.sendRequest(url, options);
     }
