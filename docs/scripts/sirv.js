@@ -117,7 +117,6 @@ var sirv = /*#__PURE__*/function () {
   }, {
     key: "uploadFile",
     value: function uploadFile(filePath, file) {
-      // var content_type = file.type;
       var authorization = 'Bearer ' + this.token;
       var filename = this.serialize({
         filename: filePath
@@ -129,7 +128,6 @@ var sirv = /*#__PURE__*/function () {
       var options = {
         method: 'POST',
         headers: {
-          // 'content-type': content_type,
           authorization: authorization
         },
         body: file

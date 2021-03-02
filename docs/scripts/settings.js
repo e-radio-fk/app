@@ -9,15 +9,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 // SETTINGS
 //
 // TODO: add a modal for waiting the file to get uploaded!
+// TODO: check if we are logged in as a user before doing anything!
 function upload_photo(file) {
-  var user = firebase.auth().currentUser;
-  if (!user) console.log("Failure getting the user!");
+  var user = sessionStorage.getItem('currentUser');
+  console.log('user: ', user);
+  /* sanity checks */
+
+  if (!user || user.uid == undefined) {
+    console.log("Failure getting the user!");
+    return;
+  }
   /* SIRV login */
+
 
   var s = new _sirv["default"]();
   s.login(function () {
     /* prepare file path inside the server */
-    var serverFilePath = '/pylarinosnick@gmail.com/user_photo.png';
+    var serverFilePath = '/' + user.uid + '/user_photo.png';
     console.log(serverFilePath);
     s.uploadFile(serverFilePath, file);
   });
@@ -172,7 +180,6 @@ var sirv = /*#__PURE__*/function () {
   }, {
     key: "uploadFile",
     value: function uploadFile(filePath, file) {
-      // var content_type = file.type;
       var authorization = 'Bearer ' + this.token;
       var filename = this.serialize({
         filename: filePath
@@ -184,7 +191,6 @@ var sirv = /*#__PURE__*/function () {
       var options = {
         method: 'POST',
         headers: {
-          // 'content-type': content_type,
           authorization: authorization
         },
         body: file

@@ -5,17 +5,23 @@
 import sirv from './_sirv.js';
 
 // TODO: add a modal for waiting the file to get uploaded!
+// TODO: check if we are logged in as a user before doing anything!
 
 function upload_photo(file) {
-    var user = firebase.auth().currentUser;
-    if (!user)
+    var user = sessionStorage.getItem('currentUser');
+    console.log('user: ', user);
+
+    /* sanity checks */
+    if ((!user) || (user.uid == undefined)) {
         console.log("Failure getting the user!");
+        return;
+    }
 
     /* SIRV login */
     var s = new sirv();
-    s.login(function() {
+    s.login(() => {
         /* prepare file path inside the server */
-        var serverFilePath = '/pylarinosnick@gmail.com/user_photo.png';
+        var serverFilePath = '/' + user.uid + '/user_photo.png';
 
         console.log(serverFilePath);
 
