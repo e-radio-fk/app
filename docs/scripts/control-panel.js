@@ -1,4 +1,4 @@
-var user = firebase.auth().currentUser;
+var user = sessionStorage.getItem('currentUser');
     
 if (!user.photoUrl)
 {
