@@ -1,5 +1,5 @@
 var user = sessionStorage.getItem('currentUser');
-    
+
 if (!user.photoUrl)
 {
     alert("No photo whatsoever!");
