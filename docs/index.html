@@ -11,6 +11,16 @@
 
 	<!-- Initialise Firebase -->
 	<script defer src="scripts/Firebase/init-firebase.js"></script>
+
+	<script>
+		//
+		// If a user is already logged in, we should show the control-panel or the user-view
+		//
+		if (window.location.pathname == '/' && sessionStorage.getItem('currentUser'))
+		{
+			window.location.replace('control-panel.html');
+		}
+	</script>
 </head>
 <header>
     <div class="now-playing-banner" id="now-playing-banner-object">
@@ -27,9 +37,10 @@
 		<p>Live e-ράδιο από φοιτητές</p>
 	</div>
 
-	<div class="sign-in-space">
+	<div class="sign-in-space">		
+		<!-- Platform Login & more... -->
 		<script defer src="scripts/login.js"></script>
-		
+
 		<button class="no-select" onclick="show_login_box()" id="sign-in-button">Sign In</button>
 		<p class="text_small" id="sign-in-text">Don't have an account? <a class="no-select" onclick="sign_up()">Sign Up</a></p>
 
