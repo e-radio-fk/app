@@ -2,7 +2,7 @@ var user = sessionStorage.getItem('currentUser');
 
 if (!user.photoUrl)
 {
-    alert("No photo whatsoever!");
+    // alert("No photo whatsoever!");
 }
 else
 {

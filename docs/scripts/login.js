@@ -58,7 +58,8 @@ function sign_in() {
     var email = document.getElementById('login-form-uname').value;
     var passw = document.getElementById('login-form-passw').value;
 
-    // TODO: implement 
+    // TODO: implement remember me
+    // TODO: sanitisation checks
 
     /* set sign-in persistance to be LOCAL: even after the browser closes the user is still logged in! */
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
@@ -69,26 +70,42 @@ function sign_in() {
             window.location.replace('control-panel.html');
         })
         .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert('Error (' + errorCode + '): ' + errorMessage);
+            console.log('error: ', error);
         });
     })
     .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert('Error (' + errorCode + '): ' + errorMessage);
+        console.log('error: ', error);
     });
 }
 
 function sign_up() {
-    // TODO: ...
+    var uname = document.getElementById('signup-form-uname').value;
+    var email = document.getElementById('signup-form-email').value;
+    var passw = document.getElementById('signup-form-passw').value;
+
+    // TODO: sanitisation checks
+
+    /* create user */
+    firebase.auth().createUserWithEmailAndPassword(email, passw)
+    .then((userCredential) => {
+        /* set username for this user */
+        userCredential.user.updateProfile({
+            displayName: uname
+        }).then(function() {
+            console.log('Successfully created a new account!');
+        }).catch(function(error) {
+            console.log('error: ', error);
+        });
+    })
+    .catch((error) => {
+        console.log('error: ', error);
+    });
 }
 
 function sign_out() {
     firebase.auth().signOut().then(() => {
         window.location.replace('/');
     }).catch((error) => {
-        alert("error: ", error);
+        console.log('error: ', error);
     });
 }
