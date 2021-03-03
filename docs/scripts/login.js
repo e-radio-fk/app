@@ -1,53 +1,39 @@
 //
+//  helpers
+//
+
+function sign_in_up_box_set_visibility(id, visibility) {
+    document.getElementById(id).style.visibility = visibility;
+    
+    var nodes = document.getElementById(id).children;
+    for(var i = 0; i < nodes.length; i++) {
+        nodes[i].style.visibility = visibility;
+    }
+
+    var inverse_visibility = (visibility == 'visible') ? 'hidden' : 'visible';
+
+    document.getElementById('sign-in-button').style.visibility = inverse_visibility;
+    document.getElementById('sign-in-text').style.visibility = inverse_visibility;
+}
+
+//
 // Sign-in Box
 //
 function show_login_box() {
-    document.getElementById('login-box').style.visibility = 'visible';
-    
-    var nodes = document.getElementById('login-box').children;
-    for(var i = 0; i < nodes.length; i++) {
-        nodes[i].style.visibility = 'visible';
-    }
-
-    document.getElementById('sign-in-button').style.visibility = 'hidden';
-    document.getElementById('sign-in-text').style.visibility = 'hidden';
+    sign_in_up_box_set_visibility('login-box', 'visible');
 }
 function hide_login_box() {
-    document.getElementById('login-box').style.visibility = 'hidden';
-    
-    var nodes = document.getElementById('login-box').children;
-    for(var i = 0; i < nodes.length; i++) {
-        nodes[i].style.visibility = 'hidden';
-    }
-    
-    document.getElementById('sign-in-button').style.visibility = 'visible';
-    document.getElementById('sign-in-text').style.visibility = 'visible';
+    sign_in_up_box_set_visibility('login-box', 'hidden');
 }
 
 //
 // Sign-up Box
 //
 function show_signup_box() {
-    document.getElementById('signup-box').style.visibility = 'visible';
-    
-    var nodes = document.getElementById('signup-box').children;
-    for(var i = 0; i < nodes.length; i++) {
-        nodes[i].style.visibility = 'visible';
-    }
-
-    document.getElementById('sign-in-button').style.visibility = 'hidden';
-    document.getElementById('sign-in-text').style.visibility = 'hidden';
+    sign_in_up_box_set_visibility('signup-box', 'visible');
 }
 function hide_signup_box() {
-    document.getElementById('signup-box').style.visibility = 'hidden';
-    
-    var nodes = document.getElementById('signup-box').children;
-    for(var i = 0; i < nodes.length; i++) {
-        nodes[i].style.visibility = 'hidden';
-    }
-    
-    document.getElementById('sign-in-button').style.visibility = 'visible';
-    document.getElementById('sign-in-text').style.visibility = 'visible';
+    sign_in_up_box_set_visibility('signup-box', 'hidden');
 }
 
 //
