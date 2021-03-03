@@ -2,6 +2,9 @@
 //  helpers
 //
 
+/* get a copy of the sign_in_up_space node */
+const sign_in_up_space_copy = document.getElementById('sign-in-or-up-space-id').cloneNode(true);
+
 function sign_in_up_box_set_visibility(id, visibility) {
     document.getElementById(id).style.visibility = visibility;
     
@@ -20,9 +23,14 @@ function sign_in_up_box_set_visibility(id, visibility) {
 // Sign-in Box
 //
 function show_login_box() {
+    document.getElementById('sign-in-button').remove();
+    document.getElementById('sign-in-text').remove();
+
     sign_in_up_box_set_visibility('login-box', 'visible');
 }
 function hide_login_box() {
+    document.getElementById('sign-in-or-up-space-id').innerHTML = sign_in_up_space_copy.innerHTML;
+
     sign_in_up_box_set_visibility('login-box', 'hidden');
 }
 
@@ -30,9 +38,15 @@ function hide_login_box() {
 // Sign-up Box
 //
 function show_signup_box() {
+    document.getElementById('sign-in-button').remove();
+    document.getElementById('sign-in-text').remove();
+    document.getElementById('login-box').remove();
+
     sign_in_up_box_set_visibility('signup-box', 'visible');
 }
 function hide_signup_box() {
+    document.getElementById('sign-in-or-up-space-id').innerHTML = sign_in_up_space_copy.innerHTML;
+
     sign_in_up_box_set_visibility('signup-box', 'hidden');
 }
 
@@ -43,6 +57,8 @@ function hide_signup_box() {
 function sign_in() {
     var email = document.getElementById('login-form-uname').value;
     var passw = document.getElementById('login-form-passw').value;
+
+    // TODO: implement 
 
     /* set sign-in persistance to be LOCAL: even after the browser closes the user is still logged in! */
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
