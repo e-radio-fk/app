@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "./node_modules/less/bin/lessc docs/less/main.less docs/css/main.css && gulp bundle",
-    "watch": "watchify docs/_browserify/sirv.js -o docs/scripts/sirv.js --debug --verbose --live"
+    "build": "lessc docs/less/main.less docs/css/main.css && gulp bundle",
+    "start": "cd docs && python3 -m http.server"
   },
   "repository": {
     "type": "git",
