@@ -1,3 +1,6 @@
+//
+// Sign-in Box
+//
 function show_login_box() {
     document.getElementById('login-box').style.visibility = 'visible';
     
@@ -21,9 +24,39 @@ function hide_login_box() {
     document.getElementById('sign-in-text').style.visibility = 'visible';
 }
 
+//
+// Sign-up Box
+//
+function show_signup_box() {
+    document.getElementById('signup-box').style.visibility = 'visible';
+    
+    var nodes = document.getElementById('signup-box').children;
+    for(var i = 0; i < nodes.length; i++) {
+        nodes[i].style.visibility = 'visible';
+    }
+
+    document.getElementById('sign-in-button').style.visibility = 'hidden';
+    document.getElementById('sign-in-text').style.visibility = 'hidden';
+}
+function hide_signup_box() {
+    document.getElementById('signup-box').style.visibility = 'hidden';
+    
+    var nodes = document.getElementById('signup-box').children;
+    for(var i = 0; i < nodes.length; i++) {
+        nodes[i].style.visibility = 'hidden';
+    }
+    
+    document.getElementById('sign-in-button').style.visibility = 'visible';
+    document.getElementById('sign-in-text').style.visibility = 'visible';
+}
+
+//
+// Methods
+//
+
 function sign_in() {
-    var email = document.getElementById('Uname').value;
-    var passw = document.getElementById('Pass').value;
+    var email = document.getElementById('login-form-uname').value;
+    var passw = document.getElementById('login-form-passw').value;
 
     /* set sign-in persistance to be LOCAL: even after the browser closes the user is still logged in! */
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {

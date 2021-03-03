@@ -1,29 +1,25 @@
 @import url('base.less');
 
-.sign-in-space {
+.sign-in-or-up-space {
     padding-top: 150px;
     text-align: center;
 }
 
-.sign-in-space button {
+.sign-in-or-up-space button {
     display: inline-block;
 }
 
-.sign-in-space a {
+.sign-in-or-up-space a {
     color: bisque;
 }
 
-#login-form #Uname, 
-#login-form #Pass {
-    height: 50px;
-    width: 290px;
-    border-radius: 7px;
-    text-align: center;
-    border-color: @text-color;
-    border-style: solid;
+#sign-up-button:hover {
+    text-decoration: underline;
+    cursor: hand;
 }
 
-#login-box {
+#login-box,
+#signup-box {
     width: 360px;
     overflow: hidden;
     margin: auto;  
@@ -36,7 +32,8 @@
 }
 
 // back-button
-#login-box img {
+#login-box img,
+#signup-box img {
     width: 30px; 
     height: 30px;
     vertical-align: middle; 

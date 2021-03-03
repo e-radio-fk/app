@@ -5,3 +5,4 @@ src/css
 node_modules
 src/assets/js
 emerald
+.gulpfile.js

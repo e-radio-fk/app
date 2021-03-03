@@ -93,6 +93,14 @@ button {
   /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+.textbox {
+  height: 50px;
+  width: 290px;
+  border-radius: 7px;
+  text-align: center;
+  border-color: #FFEA2E;
+  border-style: solid;
+}
 /* make br non-selectable */
 br {
   /* disable selecting text */
@@ -254,26 +262,22 @@ br {
   text-align: left;
   float: left;
 }
-.sign-in-space {
+.sign-in-or-up-space {
   padding-top: 150px;
   text-align: center;
 }
-.sign-in-space button {
+.sign-in-or-up-space button {
   display: inline-block;
 }
-.sign-in-space a {
+.sign-in-or-up-space a {
   color: bisque;
 }
-#login-form #Uname,
-#login-form #Pass {
-  height: 50px;
-  width: 290px;
-  border-radius: 7px;
-  text-align: center;
-  border-color: #FFEA2E;
-  border-style: solid;
+#sign-up-button:hover {
+  text-decoration: underline;
+  cursor: hand;
 }
-#login-box {
+#login-box,
+#signup-box {
   width: 360px;
   overflow: hidden;
   margin: auto;
@@ -284,7 +288,8 @@ br {
   border-width: 3px;
   visibility: hidden;
 }
-#login-box img {
+#login-box img,
+#signup-box img {
   width: 30px;
   height: 30px;
   vertical-align: middle;
@@ -299,11 +304,14 @@ br {
   transition-property: transform;
 }
 #login-box img:hover,
-#login-box img:focus {
+#signup-box img:hover,
+#login-box img:focus,
+#signup-box img:focus {
   -webkit-transform: translateX(-5px);
   transform: translateX(-5px);
 }
-#login-box img:active {
+#login-box img:active,
+#signup-box img:active {
   padding-right: 360px;
   transform: scale(0.9);
 }
