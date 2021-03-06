@@ -8,7 +8,10 @@
   },
   "scripts": {
     "build": "lessc docs/less/main.less docs/css/main.css && gulp bundle",
-    "start": "cd docs && python3 -m http.server"
+    "start": "cd docs && python3 -m http.server",
+
+    "build-server": "lessc docs/less/main.less docs/css/main.css",
+    "start-server": "node docs/server/index.js"
   },
   "repository": {
     "type": "git",
