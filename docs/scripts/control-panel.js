@@ -1,13 +1,11 @@
-var user = sessionStorage.getItem('currentUser');
+/* get current user */
+var user = JSON.parse(sessionStorage.getItem('currentUser'));
 
-if (!user.photoUrl)
-{
-    // alert("No photo whatsoever!");
-}
-else
-{
-    console.log('got photo: ', user.photoUrl);
+/* construct photo path */
+var serverFilePath = '/' + user.uid + '/user_photo.png';
+var photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
 
-    /* set user photo */
-    document.getElementById('banner-user-img').src = user.photoUrl;
-}
+console.log('got photo: ', photoURL);
+
+/* set user photo */
+document.getElementById('banner-user-img').src = photoURL;

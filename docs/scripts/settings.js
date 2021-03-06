@@ -11,8 +11,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 // TODO: add a modal for waiting the file to get uploaded!
 // TODO: check if we are logged in as a user before doing anything!
 function upload_photo(file) {
-  var user = sessionStorage.getItem('currentUser');
-  console.log('user: ', user);
+  var user = JSON.parse(sessionStorage.getItem('currentUser'));
+  console.log('user made it!: ', user);
   /* sanity checks */
 
   if (!user || user.uid == undefined) {
@@ -27,7 +27,7 @@ function upload_photo(file) {
     /* prepare file path inside the server */
     var serverFilePath = '/' + user.uid + '/user_photo.png';
     console.log(serverFilePath);
-    s.uploadFile(serverFilePath, file);
+    s.uploadFile(serverFilePath, file, function () {});
   });
 }
 

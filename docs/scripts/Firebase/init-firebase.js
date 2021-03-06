@@ -13,9 +13,8 @@ var fb = firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    sessionStorage.setItem('currentUser', user);
-    console.log('user: ', user);
-  } else{
-    sessionStorage.setItem('currentUser', null);
+    console.log('First time: ', user);
+  } else {
+    console.log('First time: null');
   }
 });

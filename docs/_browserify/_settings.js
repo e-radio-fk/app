@@ -8,8 +8,8 @@ import sirv from './_sirv.js';
 // TODO: check if we are logged in as a user before doing anything!
 
 function upload_photo(file) {
-    var user = sessionStorage.getItem('currentUser');
-    console.log('user: ', user);
+    var user = JSON.parse(sessionStorage.getItem('currentUser'));
+    console.log('user made it!: ', user);
 
     /* sanity checks */
     if ((!user) || (user.uid == undefined)) {
@@ -25,7 +25,7 @@ function upload_photo(file) {
 
         console.log(serverFilePath);
 
-        s.uploadFile(serverFilePath, file);
+        s.uploadFile(serverFilePath, file, () => {});
     });
 }
 
