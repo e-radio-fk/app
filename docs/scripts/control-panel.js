@@ -2,7 +2,7 @@
 var user = JSON.parse(sessionStorage.getItem('currentUser'));
 
 /* construct photo path */
-var serverFilePath = '/' + user.uid + '/user_photo.png';
+var serverFilePath = '/' + user.uid + '/user_photo';
 var photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
 
 console.log('got photo: ', photoURL);

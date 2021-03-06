@@ -9,7 +9,7 @@ import sirv from './_sirv.js';
 
 function upload_photo(file) {
     var user = JSON.parse(sessionStorage.getItem('currentUser'));
-    console.log('user made it!: ', user);
+    console.log('settings: user is ', user);
 
     /* sanity checks */
     if ((!user) || (user.uid == undefined)) {
@@ -21,7 +21,7 @@ function upload_photo(file) {
     var s = new sirv();
     s.login(() => {
         /* prepare file path inside the server */
-        var serverFilePath = '/' + user.uid + '/user_photo.png';
+        var serverFilePath = '/' + user.uid + '/user_photo';
 
         console.log(serverFilePath);
 

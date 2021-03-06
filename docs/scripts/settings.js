@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 // TODO: check if we are logged in as a user before doing anything!
 function upload_photo(file) {
   var user = JSON.parse(sessionStorage.getItem('currentUser'));
-  console.log('user made it!: ', user);
+  console.log('settings: user is ', user);
   /* sanity checks */
 
   if (!user || user.uid == undefined) {
@@ -25,7 +25,7 @@ function upload_photo(file) {
   var s = new _sirv["default"]();
   s.login(function () {
     /* prepare file path inside the server */
-    var serverFilePath = '/' + user.uid + '/user_photo.png';
+    var serverFilePath = '/' + user.uid + '/user_photo';
     console.log(serverFilePath);
     s.uploadFile(serverFilePath, file, function () {});
   });
