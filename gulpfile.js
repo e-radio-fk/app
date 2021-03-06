@@ -31,8 +31,16 @@ var settings_config = {
     },
 }
 
+var streaming_client_config = {
+    js: {
+        src: './docs/_browserify/_streaming-client.js', // Entry point
+        outputDir: './docs/scripts',                    // Directory to save bundle to
+        outputFile: 'streaming-client.js'               // Name to use for bundle
+    },
+}
+
 // configs array
-var configs = [sirv_config, settings_config]
+var configs = [sirv_config, settings_config, streaming_client_config]
 
 // This method makes it easy to use common bundling options in different tasks
 function bundle (bundler, config) {
