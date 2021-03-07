@@ -7,5 +7,10 @@ var photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
 
 console.log('got photo: ', photoURL);
 
+var userPhoto = document.getElementById('banner-user-img');
+
+if (photoURL)
+    userPhoto.style.borderRadius = '35%';
+
 /* set user photo */
-document.getElementById('banner-user-img').src = photoURL;
+userPhoto.src = photoURL;
