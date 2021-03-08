@@ -1,0 +1,29 @@
+figure {
+    height: 330px;
+    width: 330px;
+    border-radius: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+figure .user-photo-caption {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    transition: all .2s ease-in-out;
+    opacity: 0;
+}
+
+figure #user-photo {
+    height: 330px;
+    width: 330px;
+    object-fit: fill;
+}
+
+figure:hover #user-photo {
+    filter: brightness(70%);
+}

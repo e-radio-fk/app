@@ -15,12 +15,14 @@ export default class sirv {
     /*
      * function that makes REST calls to SIRV
      */
-    sendRequest(url, options) {      
+    sendRequest(url, options, callback) {      
         fetch(url, options)
         // TODO: find out why this doesn't work!
         // .then(response => response.json())
         .then(result => {
             console.log('Success:', result);
+
+            callback();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -87,7 +89,7 @@ export default class sirv {
      * filePath: the path of where the file should exist inside the SIRV server
      * file: the file (as in JS File API) to upload
      */
-    uploadFile(filePath, file) {
+    uploadFile(filePath, file, callback) {
         var authorization = 'Bearer ' + this.token;
 
         var filename = this.serialize({
@@ -108,6 +110,6 @@ export default class sirv {
             body: file
         };
 
-        this.sendRequest(url, options);
+        this.sendRequest(url, options, callback);
     }
 }
