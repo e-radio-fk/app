@@ -11,18 +11,8 @@
 
 	<!-- Initialise Firebase -->
 	<script defer src="scripts/Firebase/init-firebase.js"></script>
-
-	<script>
-		//
-		// If a user is already logged in, we should show the control-panel or the user-view
-		//
-		// if (window.location.pathname == '/' && sessionStorage.getItem('currentUser'))
-		// {
-		// 	window.location.replace('control-panel.html');
-		// }
-	</script>
 </head>
-<header>
+<header style="visibility: hidden;">
     <div class="now-playing-banner" id="now-playing-banner-object">
 		<img class="play-button" src="img/play.png">
         <p id="now-playing-banner-text">Last Christmas I Gave You My Heart</p>
@@ -31,7 +21,7 @@
 		<script src="scripts/move_banner.js"></script>
     </div>
 </header>
-<body>
+<body style="visibility: hidden;">
 	<div class="intro">
 		<h1>fk live patras radio</h1>
 		<p>Live e-ράδιο από φοιτητές</p>
@@ -45,7 +35,7 @@
 			SIGN IN BOX
 		 -->
 		<div id="login-box">
-			<img src="img/back.png" onclick="hide_login_box()">
+			<img class="back-button" src="img/back.png" style="width: 33px; height: 33px;" onclick="hide_login_box()">
 
 			<div id="login-form">
 				<input type="text" name="Uname" class="textbox" id="login-form-uname" placeholder="Username">    
@@ -65,7 +55,7 @@
 			SIGN UP BOX
 		 -->
 		<div id="signup-box">
-			<img src="img/back.png" onclick="hide_signup_box()">
+			<img class="back-button" src="img/back.png" style="width: 33px; height: 33px;" onclick="hide_signup_box()">
 
 			<div id="signup-form">
 				<input type="text" name="Uname" class="textbox" id="signup-form-uname" placeholder="Username">    

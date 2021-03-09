@@ -1,5 +1,7 @@
 /* get current user */
 var user = JSON.parse(sessionStorage.getItem('currentUser'));
+if (user == 'no-user')
+    window.location.pathname = "/";
 
 /* construct photo path */
 var serverFilePath = '/' + user.uid + '/user_photo';

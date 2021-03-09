@@ -7,6 +7,23 @@ import { request } from 'https';
 const clientId = 'Vzxh2OxziBamlHKpwMh0MqbZhKT';
 const clientSecret = 'z+so8b02rM+d35VFJ2bB9R8IXxIKRLbGZQ9WucVBMHlP/fnaKPN1He0/GwwtnnZvbF5527e5UDO2BrjrY52pgw==';
 
+class helper {
+    static serialize (obj, prefix) {
+        var str = [],
+          p;
+        for (p in obj) {
+          if (obj.hasOwnProperty(p)) {
+            var k = prefix ? prefix + "[" + p + "]" : p,
+              v = obj[p];
+            str.push((v !== null && typeof v === "object") ?
+              serialize(v, k) :
+              encodeURIComponent(k) + "=" + encodeURIComponent(v));
+          }
+        }
+        return str.join("&");
+    }
+}
+
 export default class sirv {
     constructor() {
         this.token = '';
@@ -22,26 +39,11 @@ export default class sirv {
         .then(result => {
             console.log('Success:', result);
 
-            callback();
+            callback(result);
         })
         .catch(error => {
             console.error('Error:', error);
         });
-    }
-
-    serialize (obj, prefix) {
-        var str = [],
-          p;
-        for (p in obj) {
-          if (obj.hasOwnProperty(p)) {
-            var k = prefix ? prefix + "[" + p + "]" : p,
-              v = obj[p];
-            str.push((v !== null && typeof v === "object") ?
-              serialize(v, k) :
-              encodeURIComponent(k) + "=" + encodeURIComponent(v));
-          }
-        }
-        return str.join("&");
     }
 
     //
@@ -92,7 +94,7 @@ export default class sirv {
     uploadFile(filePath, file, callback) {
         var authorization = 'Bearer ' + this.token;
 
-        var filename = this.serialize({
+        var filename = helper.serialize({
             filename: filePath
         });
 
@@ -111,5 +113,20 @@ export default class sirv {
         };
 
         this.sendRequest(url, options, callback);
+    }
+
+    downloadFile(filePath, noCache, callback) {
+        var authorization = 'Bearer ' + this.token;
+        var filename = helper.serialize({
+            filename: filePath
+        });
+        var cacheOptions = (noCache) ? 'no-store' : 'reload';
+
+        const options = {
+            method: 'GET',
+            cache: cacheOptions
+        };
+
+        this.sendRequest(filename, options, callback);
     }
 }

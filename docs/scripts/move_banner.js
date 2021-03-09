@@ -1,6 +1,6 @@
 var original_string = "Last Christmas I Gave You My Heart";
 
-function get_container_width() 
+function get_container_width()
 {
     return document.getElementById('now-playing-banner-object').offsetWidth;
 }

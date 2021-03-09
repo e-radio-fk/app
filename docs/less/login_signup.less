@@ -1,4 +1,4 @@
-@import url('base.less');
+@import url('general.less');
 
 .sign-in-or-up-space {
     padding-top: 150px;
@@ -37,25 +37,4 @@
 #signup-box img {
     width: 30px; 
     height: 30px;
-    vertical-align: middle; 
-    opacity: 0.8;
-    padding-right: 330px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-transition-property: transform;
-    transition-property: transform;
-
-    &:hover, &:focus {
-        -webkit-transform: translateX(-5px);
-        transform: translateX(-5px);
-    }
-    
-    &:active {
-        padding-right: 360px;
-        transform: scale(0.90);
-    }
 }

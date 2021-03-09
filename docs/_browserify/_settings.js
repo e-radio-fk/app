@@ -15,17 +15,40 @@ var user;
 var serverFilePath;
 var photoURL;
 
+var user_photo_container = document.getElementById('user-photo-container');
+var user_photo_caption = document.getElementsByClassName('user-photo-caption');
+var user_photo = document.getElementById('user-photo');
+
+var s = new sirv();
+
 //
 // Methods
 //
 
+function arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+  
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+  
+    return window.btoa(binary);
+  };
+
 function update_photo() {
-    // TODO: ...
+    user_photo.src = photoURL;
+    // s.downloadFile(photoURL, true, (result) => {
+    //     result.arrayBuffer().then((buffer) => {
+    //         var base64Flag = 'data:image/jpeg;base64,';
+    //         var imageStr = arrayBufferToBase64(buffer);
+        
+    //         user_photo.src = base64Flag + imageStr;
+    //         console.log('got: ', user_photo.src);
+    //     });
+    // });
 }
 
 function upload_photo(file) {
     /* SIRV login */
-    var s = new sirv();
     s.login(() => {
         s.uploadFile(serverFilePath, file, function() {
             update_photo();
@@ -67,15 +90,11 @@ if ((!user) || (user.uid == undefined))
     window.location.pathname = "..";
     // TODO: show error on main screen!
 }
-else 
+else
 {
     /* construct photo path */
     serverFilePath = '/' + user.uid + '/user_photo';
     photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
-
-    var user_photo_container = document.getElementById('user-photo-container');
-    var user_photo_caption = document.getElementsByClassName('user-photo-caption');
-    var user_photo = document.getElementById('user-photo');
 
     /*
     * At this point we have defined our functions, but normal html cannot
@@ -84,13 +103,5 @@ else
     */
     user_photo_container.onclick = set_photo;
 
-    user_photo_container.onmouseover = function() {
-        user_photo_caption.innerHTML = "Change Photo";
-        user_photo_caption.style.
-    };
-    user_photo_container.onmouseout = function() {
-        user_photo_caption.innerHTML = "";
-    };
-
-    user_photo.src = photoURL;
+    update_photo();
 }

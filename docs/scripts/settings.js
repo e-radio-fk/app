@@ -15,16 +15,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 //
 var user;
 var serverFilePath;
-var photoURL; //
+var photoURL;
+var user_photo_container = document.getElementById('user-photo-container');
+var user_photo_caption = document.getElementsByClassName('user-photo-caption');
+var user_photo = document.getElementById('user-photo');
+var s = new _sirv["default"](); //
 // Methods
 //
 
-function update_photo() {// TODO: ...
+function arrayBufferToBase64(buffer) {
+  var binary = '';
+  var bytes = [].slice.call(new Uint8Array(buffer));
+  bytes.forEach(function (b) {
+    return binary += String.fromCharCode(b);
+  });
+  return window.btoa(binary);
+}
+
+;
+
+function update_photo() {
+  user_photo.src = photoURL; // s.downloadFile(photoURL, true, (result) => {
+  //     result.arrayBuffer().then((buffer) => {
+  //         var base64Flag = 'data:image/jpeg;base64,';
+  //         var imageStr = arrayBufferToBase64(buffer);
+  //         user_photo.src = base64Flag + imageStr;
+  //         console.log('got: ', user_photo.src);
+  //     });
+  // });
 }
 
 function upload_photo(file) {
   /* SIRV login */
-  var s = new _sirv["default"]();
   s.login(function () {
     s.uploadFile(serverFilePath, file, function () {
       update_photo();
@@ -69,9 +91,6 @@ if (!user || user.uid == undefined) {
   /* construct photo path */
   serverFilePath = '/' + user.uid + '/user_photo';
   photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
-  var user_photo_container = document.getElementById('user-photo-container');
-  var user_photo_caption = document.getElementsByClassName('user-photo-caption');
-  var user_photo = document.getElementById('user-photo');
   /*
   * At this point we have defined our functions, but normal html cannot
   *  see our Node.JS functions (e.g. set_photo()).  Therefore, we assign
@@ -79,16 +98,7 @@ if (!user || user.uid == undefined) {
   */
 
   user_photo_container.onclick = set_photo;
-
-  user_photo_container.onmouseover = function () {
-    user_photo_caption.innerHTML = "Change Photo";
-  };
-
-  user_photo_container.onmouseout = function () {
-    user_photo_caption.innerHTML = "";
-  };
-
-  user_photo.src = photoURL;
+  update_photo();
 }
 
 },{"./_sirv.js":2}],2:[function(require,module,exports){
@@ -116,30 +126,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var clientId = 'Vzxh2OxziBamlHKpwMh0MqbZhKT';
 var clientSecret = 'z+so8b02rM+d35VFJ2bB9R8IXxIKRLbGZQ9WucVBMHlP/fnaKPN1He0/GwwtnnZvbF5527e5UDO2BrjrY52pgw==';
 
-var sirv = /*#__PURE__*/function () {
-  function sirv() {
-    _classCallCheck(this, sirv);
-
-    this.token = '';
+var helper = /*#__PURE__*/function () {
+  function helper() {
+    _classCallCheck(this, helper);
   }
-  /*
-   * function that makes REST calls to SIRV
-   */
 
-
-  _createClass(sirv, [{
-    key: "sendRequest",
-    value: function sendRequest(url, options, callback) {
-      fetch(url, options) // TODO: find out why this doesn't work!
-      // .then(response => response.json())
-      .then(function (result) {
-        console.log('Success:', result);
-        callback();
-      })["catch"](function (error) {
-        console.error('Error:', error);
-      });
-    }
-  }, {
+  _createClass(helper, null, [{
     key: "serialize",
     value: function (_serialize) {
       function serialize(_x, _x2) {
@@ -164,10 +156,38 @@ var sirv = /*#__PURE__*/function () {
       }
 
       return str.join("&");
+    })
+  }]);
+
+  return helper;
+}();
+
+var sirv = /*#__PURE__*/function () {
+  function sirv() {
+    _classCallCheck(this, sirv);
+
+    this.token = '';
+  }
+  /*
+   * function that makes REST calls to SIRV
+   */
+
+
+  _createClass(sirv, [{
+    key: "sendRequest",
+    value: function sendRequest(url, options, callback) {
+      fetch(url, options) // TODO: find out why this doesn't work!
+      // .then(response => response.json())
+      .then(function (result) {
+        console.log('Success:', result);
+        callback(result);
+      })["catch"](function (error) {
+        console.error('Error:', error);
+      });
     } //
     //  Member Functions
     //
-    )
+
   }, {
     key: "login",
     value: function login(handler) {
@@ -212,7 +232,7 @@ var sirv = /*#__PURE__*/function () {
     key: "uploadFile",
     value: function uploadFile(filePath, file, callback) {
       var authorization = 'Bearer ' + this.token;
-      var filename = this.serialize({
+      var filename = helper.serialize({
         filename: filePath
       });
       var formData = new FormData();
@@ -227,6 +247,20 @@ var sirv = /*#__PURE__*/function () {
         body: file
       };
       this.sendRequest(url, options, callback);
+    }
+  }, {
+    key: "downloadFile",
+    value: function downloadFile(filePath, noCache, callback) {
+      var authorization = 'Bearer ' + this.token;
+      var filename = helper.serialize({
+        filename: filePath
+      });
+      var cacheOptions = noCache ? 'no-store' : 'reload';
+      var options = {
+        method: 'GET',
+        cache: cacheOptions
+      };
+      this.sendRequest(filename, options, callback);
     }
   }]);
 

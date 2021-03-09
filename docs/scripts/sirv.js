@@ -23,30 +23,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var clientId = 'Vzxh2OxziBamlHKpwMh0MqbZhKT';
 var clientSecret = 'z+so8b02rM+d35VFJ2bB9R8IXxIKRLbGZQ9WucVBMHlP/fnaKPN1He0/GwwtnnZvbF5527e5UDO2BrjrY52pgw==';
 
-var sirv = /*#__PURE__*/function () {
-  function sirv() {
-    _classCallCheck(this, sirv);
-
-    this.token = '';
+var helper = /*#__PURE__*/function () {
+  function helper() {
+    _classCallCheck(this, helper);
   }
-  /*
-   * function that makes REST calls to SIRV
-   */
 
-
-  _createClass(sirv, [{
-    key: "sendRequest",
-    value: function sendRequest(url, options, callback) {
-      fetch(url, options) // TODO: find out why this doesn't work!
-      // .then(response => response.json())
-      .then(function (result) {
-        console.log('Success:', result);
-        callback();
-      })["catch"](function (error) {
-        console.error('Error:', error);
-      });
-    }
-  }, {
+  _createClass(helper, null, [{
     key: "serialize",
     value: function (_serialize) {
       function serialize(_x, _x2) {
@@ -71,10 +53,38 @@ var sirv = /*#__PURE__*/function () {
       }
 
       return str.join("&");
+    })
+  }]);
+
+  return helper;
+}();
+
+var sirv = /*#__PURE__*/function () {
+  function sirv() {
+    _classCallCheck(this, sirv);
+
+    this.token = '';
+  }
+  /*
+   * function that makes REST calls to SIRV
+   */
+
+
+  _createClass(sirv, [{
+    key: "sendRequest",
+    value: function sendRequest(url, options, callback) {
+      fetch(url, options) // TODO: find out why this doesn't work!
+      // .then(response => response.json())
+      .then(function (result) {
+        console.log('Success:', result);
+        callback(result);
+      })["catch"](function (error) {
+        console.error('Error:', error);
+      });
     } //
     //  Member Functions
     //
-    )
+
   }, {
     key: "login",
     value: function login(handler) {
@@ -119,7 +129,7 @@ var sirv = /*#__PURE__*/function () {
     key: "uploadFile",
     value: function uploadFile(filePath, file, callback) {
       var authorization = 'Bearer ' + this.token;
-      var filename = this.serialize({
+      var filename = helper.serialize({
         filename: filePath
       });
       var formData = new FormData();
@@ -134,6 +144,20 @@ var sirv = /*#__PURE__*/function () {
         body: file
       };
       this.sendRequest(url, options, callback);
+    }
+  }, {
+    key: "downloadFile",
+    value: function downloadFile(filePath, noCache, callback) {
+      var authorization = 'Bearer ' + this.token;
+      var filename = helper.serialize({
+        filename: filePath
+      });
+      var cacheOptions = noCache ? 'no-store' : 'reload';
+      var options = {
+        method: 'GET',
+        cache: cacheOptions
+      };
+      this.sendRequest(filename, options, callback);
     }
   }]);
 

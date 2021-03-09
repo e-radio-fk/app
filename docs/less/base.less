@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400');
 
+@import url('general.less');
+
 @background-color: #4a2cb4;
 @background-color-light: #5a3ebe;
 @background-color-dark: #412c8a;
@@ -7,17 +9,6 @@
 @text-color: #FFEA2E;
 
 @h1: #FFFFFF;
-
-.no-select {
-  /* disable selecting text */
-  -webkit-touch-callout: none;  /* iOS Safari */
-    -webkit-user-select: none;  /* Safari */
-      -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none;  /* Internet Explorer/Edge */
-            user-select: none;  /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
 
 html {
   font-size: 100%;
@@ -65,11 +56,11 @@ button {
   background-color: @text-color;
   border: 2px solid #000000;
   border-radius: 10px;
-  text-transform: uppercase;
   font-size: 25px;
   text-indent: 10px;
   padding: 10px;
   box-shadow: 5px 1px 300px #000000;
+  outline: none;
 
   .no-select();
 }
@@ -81,6 +72,30 @@ button {
   text-align: center;
   border-color: @text-color;
   border-style: solid;
+}
+
+.back-button {
+  vertical-align: middle; 
+  opacity: 0.8;
+  padding-right: 330px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+
+  &:hover, &:focus {
+      -webkit-transform: translateX(-5px);
+      transform: translateX(-5px);
+  }
+  
+  &:active {
+      padding-right: 360px;
+      transform: scale(0.90);
+  }
 }
 
 /* make br non-selectable */

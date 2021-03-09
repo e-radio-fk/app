@@ -11,14 +11,19 @@
 	<script defer src="scripts/Firebase/init-firebase.js"></script>
 </head>
 <body>
+    <div style="position: relative;">
+        <img class="back-button" src="img/back.png" style="height: 50px; width: 50px; position: absolute;" onclick="window.location.pathname = '../console.html'">
+        <h1 style="text-align: center;">Profile</h1>
+    </div>
     <br>
     <br>
-    <h1 style="text-align: center;">Profile</h1>
 
     <!-- User Photo Preview -->
     <figure id="user-photo-container">
         <img id="user-photo"></img>
-        <span class="user-photo-caption"></span>
+        <div class="user-photo-caption">
+            <div class="user-photo-caption-text">Choose photo</div>
+        </div>
     </figure>
 
     <p>Username</p>
