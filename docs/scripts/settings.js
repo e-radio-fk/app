@@ -86,7 +86,7 @@ console.log('settings: user is ', user);
 
 if (!user || user.uid == undefined) {
   console.log("Failure getting the user!");
-  window.location.pathname = ".."; // TODO: show error on main screen!
+  if (window.location.href.indexOf('127.0.0.1') != -1) window.location.pathname = "/";else window.location.href = "https://e-radio-fk.github.io/app"; // TODO: show error on main screen!
 } else {
   /* construct photo path */
   serverFilePath = '/' + user.uid + '/user_photo';

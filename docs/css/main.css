@@ -283,6 +283,12 @@ br {
   text-align: left;
   float: left;
 }
+#control-panel-nav-bar-title {
+  text-align: initial;
+  float: initial;
+  margin-left: auto;
+  margin-right: auto;
+}
 .sign-in-or-up-space {
   padding-top: 150px;
   text-align: center;
