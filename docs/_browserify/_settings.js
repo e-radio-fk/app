@@ -84,9 +84,9 @@ user = JSON.parse(sessionStorage.getItem('currentUser'));
 console.log('settings: user is ', user);
 
 /* sanity checks */
-if ((!user) || (user.uid == undefined)) 
+if ((!user) || (user.uid == undefined) || user == 'no-user') 
 {
-    console.log("Failure getting the user!");
+    console.log('settings: restricting view to unauthorised user!');
 
     if (window.location.href.indexOf('127.0.0.1') != -1)
         window.location.pathname = "/";
@@ -97,6 +97,8 @@ if ((!user) || (user.uid == undefined))
 }
 else
 {
+    document.getElementsByTagName('body')[0].style.visibility = 'visible';
+
     /* construct photo path */
     serverFilePath = '/' + user.uid + '/user_photo';
     photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
