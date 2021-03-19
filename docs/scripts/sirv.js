@@ -151,11 +151,11 @@ var sirv = /*#__PURE__*/function () {
       var authorization = 'Bearer ' + this.token;
       var filename = helper.serialize({
         filename: filePath
-      });
-      var cacheOptions = noCache ? 'no-store' : 'reload';
+      }); // var cacheOptions = (noCache) ? 'no-store' : 'reload';
+
       var options = {
         method: 'GET',
-        cache: cacheOptions
+        cache: 'no-cache'
       };
       this.sendRequest(filename, options, callback);
     }

@@ -32,19 +32,11 @@ function arrayBufferToBase64(buffer) {
     bytes.forEach((b) => binary += String.fromCharCode(b));
   
     return window.btoa(binary);
-  };
+};
 
 function update_photo() {
-    user_photo.src = photoURL;
-    // s.downloadFile(photoURL, true, (result) => {
-    //     result.arrayBuffer().then((buffer) => {
-    //         var base64Flag = 'data:image/jpeg;base64,';
-    //         var imageStr = arrayBufferToBase64(buffer);
-        
-    //         user_photo.src = base64Flag + imageStr;
-    //         console.log('got: ', user_photo.src);
-    //     });
-    // });
+    user_photo.src = photoURL + '?t=' + new Date().getTime();
+    window.location.href = window.location.href;
 }
 
 function upload_photo(file) {
@@ -103,12 +95,11 @@ else
     serverFilePath = '/' + user.uid + '/user_photo';
     photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
 
+    user_photo.src = photoURL + '?t=' + new Date().getTime();
     /*
-    * At this point we have defined our functions, but normal html cannot
-    *  see our Node.JS functions (e.g. set_photo()).  Therefore, we assign
-    *  onclick handlers through here!
-    */
+     * At this point we have defined our functions, but normal html cannot
+     *  see our Node.JS functions (e.g. set_photo()).  Therefore, we assign
+     *  onclick handlers through here!
+     */
     user_photo_container.onclick = set_photo;
-
-    update_photo();
 }
