@@ -17,17 +17,29 @@ var general = /*#__PURE__*/function () {
   function general() {
     _classCallCheck(this, general);
   }
-  /*
-  * takes the header element and adds an error banner
-  */
+  /** 
+   *  show_error(error_message:string, error:whatever)
+   *  
+   *  takes the header element and adds an error banner
+   */
 
 
   _createClass(general, [{
     key: "show_error",
     value: function show_error(error_message, error) {
+      /* create new node */
       var node = document.createElement('div');
+      /* get header */
+
+      var header = document.getElementsByTagName('header')[0];
+      /* create node's contents */
+
       node.innerHTML = '<div class="error">' + error_message + ' <span class="error-close-button" onclick="this.parentElement.style.display=\'none\';">&times;</span></div>';
-      document.getElementsByTagName('header')[0].appendChild(node);
+      /* add node to header */
+
+      header.insertBefore(node, header.firstChild);
+      /* debugging */
+
       console.log(error_message + ': ' + error);
     }
   }]);
@@ -133,8 +145,7 @@ console.log('settings: user is ', user);
 /* sanity checks */
 
 if (!user || user.uid == undefined || user == 'no-user') {
-  console.log('settings: restricting view to unauthorised user!');
-  if (window.location.href.indexOf('127.0.0.1') != -1) window.location.pathname = "/";else window.location.href = "https://e-radio-fk.github.io/app"; // TODO: show error on main screen!
+  if (window.location.href.indexOf('127.0.0.1') != -1) window.location.pathname = "/" + '?error=UnauthorisedUser';else window.location.href = "https://e-radio-fk.github.io/app" + '?error=UnauthorisedUser';
 } else {
   document.getElementsByTagName('body')[0].style.visibility = 'visible';
   /* construct photo path */

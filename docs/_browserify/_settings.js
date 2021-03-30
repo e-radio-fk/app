@@ -38,7 +38,7 @@ function update_photo() {
     var http = user_photo.src;
     if (http.indexOf("&d=") != -1) { 
         http = http.split("&d=")[0]; 
-    } 
+    }
 
     user_photo.src = http + '&d=' + d.getTime();
 
@@ -97,14 +97,10 @@ console.log('settings: user is ', user);
 /* sanity checks */
 if ((!user) || (user.uid == undefined) || user == 'no-user') 
 {
-    console.log('settings: restricting view to unauthorised user!');
-
     if (window.location.href.indexOf('127.0.0.1') != -1)
-        window.location.pathname = "/";
+        window.location.pathname = "/" + '?error=UnauthorisedUser';
     else
-        window.location.href = "https://e-radio-fk.github.io/app";
-
-    // TODO: show error on main screen!
+        window.location.href = "https://e-radio-fk.github.io/app" + '?error=UnauthorisedUser';
 }
 else
 {
@@ -115,6 +111,7 @@ else
     photoURL = 'https://eradiofk.sirv.com' + serverFilePath;
 
     user_photo.src = photoURL + '?t=' + new Date().getTime();
+
     /*
      * At this point we have defined our functions, but normal html cannot
      *  see our Node.JS functions (e.g. set_photo()).  Therefore, we assign

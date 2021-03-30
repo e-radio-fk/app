@@ -102,6 +102,7 @@ button {
   border-style: solid;
 }
 .back-button {
+  content: url('../img/back.png');
   vertical-align: middle;
   opacity: 0.8;
   padding-right: 330px;
@@ -446,6 +447,7 @@ input:checked + .slider:before {
 }
 /* Play button */
 .play-button {
+  content: url('../img/play.png');
   padding-left: 10px;
   display: inline-block;
   width: 40px;
@@ -514,6 +516,10 @@ input:checked + .slider:before {
 #signup-box img {
   width: 30px;
   height: 30px;
+}
+#login-box-back-button {
+  width: 33px;
+  height: 33px;
 }
 .setttings-nav-bar img {
   height: 50px;
