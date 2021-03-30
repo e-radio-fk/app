@@ -3,9 +3,7 @@
 //
 
 import sirv from './_sirv.js';
-
-// TODO: add a modal for waiting the file to get uploaded!
-// TODO: check if we are logged in as a user before doing anything!
+import general from './_general.js';
 
 //
 // Variables
@@ -19,32 +17,53 @@ var user_photo_container = document.getElementById('user-photo-container');
 var user_photo_caption = document.getElementsByClassName('user-photo-caption');
 var user_photo = document.getElementById('user-photo');
 
+var spinner = document.getElementById('spinner');
+
 var s = new sirv();
+var g = new general();
 
 //
 // Methods
 //
 
-function arrayBufferToBase64(buffer) {
-    var binary = '';
-    var bytes = [].slice.call(new Uint8Array(buffer));
-  
-    bytes.forEach((b) => binary += String.fromCharCode(b));
-  
-    return window.btoa(binary);
-};
+function start_spinner() {
+    spinner.style.visibility = 'visible';
+}
+function stop_spinner() {
+    spinner.style.visibility = 'hidden';
+}
 
 function update_photo() {
-    user_photo.src = photoURL + '?t=' + new Date().getTime();
-    window.location.href = window.location.href;
+    var d = new Date;
+    var http = user_photo.src;
+    if (http.indexOf("&d=") != -1) { 
+        http = http.split("&d=")[0]; 
+    } 
+
+    user_photo.src = http + '&d=' + d.getTime();
+
+    // reload window without cache
+    window.location.reload(true);
 }
 
 function upload_photo(file) {
+    start_spinner();
+
     /* SIRV login */
-    s.login(() => {
-        s.uploadFile(serverFilePath, file, function() {
-            update_photo();
-        });
+    s.login((res) => {
+        if (!res.ok)
+        {
+            stop_spinner();
+            g.show_error('Failed to upload photo!', res);
+        }
+        else
+        {
+            s.uploadFile(serverFilePath, file, (res) => {
+                update_photo();
+    
+                stop_spinner();
+            });
+        }
     });
 }
 

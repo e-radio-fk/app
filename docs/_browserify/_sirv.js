@@ -75,7 +75,7 @@ export default class sirv {
                 this.token = apiResponse.token;
                 
                 /* success handler */
-                handler();
+                handler(res);
             });
         });
         
@@ -113,20 +113,5 @@ export default class sirv {
         };
 
         this.sendRequest(url, options, callback);
-    }
-
-    downloadFile(filePath, noCache, callback) {
-        var authorization = 'Bearer ' + this.token;
-        var filename = helper.serialize({
-            filename: filePath
-        });
-        // var cacheOptions = (noCache) ? 'no-store' : 'reload';
-
-        const options = {
-            method: 'GET',
-            cache: 'no-cache'
-        };
-
-        this.sendRequest(filename, options, callback);
     }
 }

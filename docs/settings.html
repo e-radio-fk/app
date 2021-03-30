@@ -1,5 +1,11 @@
 <html>
 <head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+
+    <!-- Reloading the page should be done by ignoring cache; this way we can reload the photos -->
+    <meta http-equiv="Cache-control" content="no-cache">
+
     <title>FK Live E-Radio: Control Panel</title>
     <link rel="stylesheet" href="css/main.css">
 
@@ -10,6 +16,9 @@
 	<!-- Initialise Firebase -->
 	<script defer src="scripts/Firebase/init-firebase.js"></script>
 </head>
+<header>
+    <!-- print errors & warnings here! -->
+</header>
 <body style="visibility: hidden;">
     <script>
         function settings_go_back() {
@@ -22,22 +31,32 @@
     </script>
 
     <div style="position: relative;">
-        <img class="back-button" src="img/back.png" style="height: 50px; width: 50px; position: absolute;" onclick="settings_go_back();">
+        <img class="back-button" src="img/back.png" onclick="settings_go_back();">
         <h1 style="text-align: center;">Profile</h1>
     </div>
     <br>
     <br>
 
-    <!-- User Photo Preview -->
-    <figure id="user-photo-container">
-        <img id="user-photo"></img>
-        <div class="user-photo-caption">
-            <div class="user-photo-caption-text">Choose photo</div>
+    <div style="clear: both;">
+        <!-- User Photo Preview -->
+        <div style="float: left; padding-left: 30%;">
+            <figure id="user-photo-container">
+                <img id="user-photo">
+                <div class="user-photo-caption">
+                    <div class="user-photo-caption-text">Choose photo</div>
+                    
+                    <div id="spinner">
+                        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    </div>
+                </div>
+            </figure>
         </div>
-    </figure>
 
-    <p>Username</p>
-    <p>Password</p>
+        <div style="margin-left: 45%;">
+            <p>Username</p>
+            <p>Password</p>
+        </div>
+    </div>
 
     <script defer src="scripts/settings.js"></script>
     <script defer src="scripts/sirv.js"></script>

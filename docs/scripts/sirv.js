@@ -111,7 +111,7 @@ var sirv = /*#__PURE__*/function () {
           _this.token = apiResponse.token;
           /* success handler */
 
-          handler();
+          handler(res);
         });
       });
       req.write(JSON.stringify({
@@ -144,20 +144,6 @@ var sirv = /*#__PURE__*/function () {
         body: file
       };
       this.sendRequest(url, options, callback);
-    }
-  }, {
-    key: "downloadFile",
-    value: function downloadFile(filePath, noCache, callback) {
-      var authorization = 'Bearer ' + this.token;
-      var filename = helper.serialize({
-        filename: filePath
-      }); // var cacheOptions = (noCache) ? 'no-store' : 'reload';
-
-      var options = {
-        method: 'GET',
-        cache: 'no-cache'
-      };
-      this.sendRequest(filename, options, callback);
     }
   }]);
 

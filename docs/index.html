@@ -1,5 +1,8 @@
 <html>
 <head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">	
+
 	<title>FK Live E-Radio</title>
 	<link rel="stylesheet" href="css/main.css">
 
@@ -13,6 +16,10 @@
 	<script defer src="scripts/Firebase/init-firebase.js"></script>
 </head>
 <header style="visibility: hidden;">
+	<script>
+
+	</script>
+
     <div class="now-playing-banner" id="now-playing-banner-object">
 		<img class="play-button" src="img/play.png">
         <p id="now-playing-banner-text">Last Christmas I Gave You My Heart</p>
@@ -20,6 +27,19 @@
 		<!-- Move banner -->
 		<script src="scripts/move_banner.js"></script>
     </div>
+
+	<br>
+
+	<!-- Rounded switch -->
+	<div style="float: right; clear: both;">
+		<div style="float: left; padding-right: 5px; margin-top: -6px;">
+			<a style="font-size: 20px">🌓</a>
+		</div>
+		<label class="switch" style="float: right;" onclick="">
+			<input type="checkbox">
+			<span class="slider round"></span>
+		</label>
+	</div>
 </header>
 <body style="visibility: hidden;">
 	<div class="intro">
