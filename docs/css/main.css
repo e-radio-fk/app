@@ -589,7 +589,7 @@ figure .user-photo-caption-text {
   vertical-align: middle;
   position: relative;
 }
-.back-button {
+#settings-back-button {
   height: 50px;
   width: 50px;
   position: absolute;
