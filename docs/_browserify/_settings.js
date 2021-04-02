@@ -51,12 +51,12 @@ function upload_photo(file) {
 
     /* SIRV login */
     s.login((res) => {
-        if (!res.ok)
-        {
-            stop_spinner();
-            g.show_error('Failed to upload photo!', res);
-        }
-        else
+        // if (!res.ok)
+        // {
+        //     stop_spinner();
+        //     g.show_error('Failed to upload photo!', res);
+        // }
+        // else
         {
             s.uploadFile(serverFilePath, file, (res) => {
                 update_photo();
