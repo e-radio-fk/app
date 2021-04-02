@@ -5,7 +5,7 @@ var _socket = _interopRequireDefault(require("socket.io-client"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// const socket = io("https://e-radio-fk-server-zzhqz.ondigitalocean.app/streaming-server/stream:8080");
+// const socket = io("https://e-radio-fk-server-zzhqz.ondigitalocean.app/streaming-server/stream");
 var socket = (0, _socket["default"])("http://127.0.0.1:8081");
 socket.on("hello", function () {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
